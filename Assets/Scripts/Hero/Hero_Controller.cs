@@ -9,6 +9,10 @@ public class Hero_Controller : MonoBehaviour
     public Animator anim;
     public float moveSpeed;
 
+    private void Start()
+    {
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+    }
     // Update is called once per frame
     void Update()
     {
