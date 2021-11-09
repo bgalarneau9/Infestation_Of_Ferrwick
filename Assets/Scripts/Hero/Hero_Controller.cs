@@ -13,7 +13,7 @@ public class Hero_Controller : MonoBehaviour
     void Update()
     {
         moveBy.x = Input.GetAxisRaw("Horizontal");
-        //moveBy.y = Input.GetAxisRaw("Vertical");
+        moveBy.y = Input.GetAxisRaw("Vertical");
         Debug.Log("X = " + moveBy.x + " Y = " + moveBy.y);
         anim.SetFloat("Horizontal", moveBy.x);
         //anim.SetFloat("Vertical", moveBy.y);
