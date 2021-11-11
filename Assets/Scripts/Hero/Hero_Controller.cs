@@ -26,6 +26,10 @@ public class Hero_Controller : MonoBehaviour
     private void FixedUpdate()
     {
         rb.position += moveBy * moveSpeed * Time.fixedDeltaTime;
+        if (Input.GetKey(KeyCode.Space))
+        {
+            anim.Play("Hero_Attack_Right");
+        }
     }
 }
 
