@@ -8,8 +8,11 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour
 {
     public static GameController Instance { get; private set; }
+    //Main Menu
     private Button buttonPlayGame;
     private Button buttonPlayerSelect;
+    //Sample Scene
+    private Button buttonBack;
     private void Awake()
     {
         if (Instance == null)
@@ -55,6 +58,14 @@ public class GameController : MonoBehaviour
     public void InitializeComponents_Scene_Sample()
     {
         Debug.Log("Sample Scene initialized");
+        buttonBack = GameObject.Find("Button_Back").GetComponent<Button>();
+        buttonBack.onClick.AddListener(() => { onButtonBackClicked(); });
+    }
+
+    private void onButtonBackClicked()
+    {
+        SceneManager.LoadScene(1);
+        Debug.Log("Load Main Menu Scene!");
     }
 
     private void onPlayGameClicked()
