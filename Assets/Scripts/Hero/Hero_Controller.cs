@@ -8,6 +8,9 @@ public class Hero_Controller : MonoBehaviour
     public Vector2 moveBy;
     public Animator anim;
     public float moveSpeed;
+    public GameObject HeroProjectilePrefab;
+    public Transform HeroProjectileSpawnPoint;
+
 
     private void Start()
     {
@@ -29,7 +32,14 @@ public class Hero_Controller : MonoBehaviour
         if (Input.GetKey(KeyCode.Space))
         {
             anim.Play("Hero_Attack_Right");
+            attack();
         }
+    }
+    public void attack()
+    {
+        var heroProjectile = Instantiate(HeroProjectilePrefab, HeroProjectileSpawnPoint.position, Quaternion.identity) as GameObject;
+        var heroProjectileRigidBody = heroProjectile.GetComponent<Rigidbody2D>();
+        heroProjectileRigidBody.velocity = Quaternion.Euler(0, 0, 0) * Vector3.right * 10; //10 == power
     }
 }
 
