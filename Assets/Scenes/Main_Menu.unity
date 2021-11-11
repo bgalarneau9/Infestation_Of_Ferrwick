@@ -157,8 +157,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: 0.000030517578, y: -30.672745}
-  m_SizeDelta: {x: 248.5852, y: 61.34549}
+  m_AnchoredPosition: {x: -0.0024719, y: -28.2132}
+  m_SizeDelta: {x: 880.99, y: 56.4273}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &200126260
 MonoBehaviour:
@@ -193,7 +193,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Game Title
+  m_Text: The Infestation of Ferrwick
 --- !u!222 &200126261
 CanvasRenderer:
   m_ObjectHideFlags: 0
