@@ -31,15 +31,20 @@ public class Hero_Controller : MonoBehaviour
         rb.position += moveBy * moveSpeed * Time.fixedDeltaTime;
         if (Input.GetKey(KeyCode.Space))
         {
-            anim.Play("Hero_Attack_Right");
             attack();
+            anim.Play("Hero_Attack_Right");
         }
     }
     public void attack()
     {
-        var heroProjectile = Instantiate(HeroProjectilePrefab, HeroProjectileSpawnPoint.position, Quaternion.identity) as GameObject;
-        var heroProjectileRigidBody = heroProjectile.GetComponent<Rigidbody2D>();
-        heroProjectileRigidBody.velocity = Quaternion.Euler(0, 0, 0) * Vector3.right * 10; //10 == power
+        int NumberOfPojectiles = GameObject.FindGameObjectsWithTag("Projectile").Length;
+        if( NumberOfPojectiles < 2 )
+        {
+            var heroProjectile = Instantiate(HeroProjectilePrefab, HeroProjectileSpawnPoint.position, Quaternion.identity) as GameObject;
+            var heroProjectileRigidBody = heroProjectile.GetComponent<Rigidbody2D>();
+            heroProjectileRigidBody.velocity = Quaternion.Euler(0, 0, 0) * Vector3.right * 10; //10 == power
+            Destroy(heroProjectile, 0.10f);
+        }
     }
 }
 
