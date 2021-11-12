@@ -11,15 +11,27 @@ public class EnemySpellcasterController : MonoBehaviour
     private Transform _bloodSplatSpawn;
     [SerializeField]
     private GameObject _bloodSplatPrefab;
-
     public AudioClip deathsound;
-
     private AudioSource MyAudioSrc;
+    public Animator anim;
+    public GameObject EnemyProjectilePrefab;
+    public Transform EnemyProjectileSpawnPoint;
 
     void Start()
     {
     }
+    private void Update()
+    {
+    }
 
+    private void attack()
+    {
+        anim.Play("Enemy_Spellcaster_Attack");
+        var projectile = Instantiate(EnemyProjectilePrefab, EnemyProjectileSpawnPoint.position, Quaternion.identity) as GameObject;
+        var projectileRigidBody = projectile.GetComponent<Rigidbody2D>();
+        projectileRigidBody.velocity = Quaternion.Euler(0, 0, 0) * Vector3.right * 10; //10 == power
+        Destroy(projectile, 0.25f);
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
