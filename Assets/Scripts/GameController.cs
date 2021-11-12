@@ -13,6 +13,8 @@ public class GameController : MonoBehaviour
     private Button buttonPlayerSelect;
     //Sample Scene
     private Button buttonBack;
+    private Text textHealth;
+    public Hero_Controller Character;
     private void Awake()
     {
         if (Instance == null)
@@ -43,7 +45,10 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            textHealth.text = Character.health.ToString();
+        }
     }
 
     private void InitializeComponents_Scene_Main_Menu()
@@ -60,6 +65,7 @@ public class GameController : MonoBehaviour
         Debug.Log("Sample Scene initialized");
         buttonBack = GameObject.Find("Button_Back").GetComponent<Button>();
         buttonBack.onClick.AddListener(() => { onButtonBackClicked(); });
+        textHealth = GameObject.Find("Text_Health").GetComponent<Text>();
     }
 
     private void onButtonBackClicked()

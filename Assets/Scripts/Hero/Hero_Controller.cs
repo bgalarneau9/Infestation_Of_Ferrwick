@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Hero_Controller : MonoBehaviour
 {
-    private int health = 100;
+    public int health = 100;
     public Rigidbody2D rb;
     public Vector2 moveBy;
     public Animator anim;
