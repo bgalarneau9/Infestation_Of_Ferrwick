@@ -11,7 +11,6 @@ public class Hero_Controller : MonoBehaviour
     public GameObject HeroProjectilePrefab;
     public Transform HeroProjectileSpawnPoint;
 
-
     private void Start()
     {
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
