@@ -151,6 +151,10 @@ MonoBehaviour:
   moveSpeed: 3
   HeroProjectilePrefab: {fileID: 2872052419323693477}
   HeroProjectileSpawnPoint: {fileID: 983475619255674262}
+  _bloodSplatSpawn: {fileID: 151389604}
+  _bloodSplatPrefab: {fileID: 822909973}
+  deathsound: {fileID: 0}
+  heroPrefab: {fileID: 70578438}
 --- !u!4 &70578441 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 983475619319321756, guid: d43528eec1fda2c4ca669f21dc984bba, type: 3}
@@ -161,6 +165,36 @@ Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 983475619319321758, guid: d43528eec1fda2c4ca669f21dc984bba, type: 3}
   m_PrefabInstance: {fileID: 983475619255674261}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &151389603
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 151389604}
+  m_Layer: 0
+  m_Name: BloodSplatSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &151389604
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 151389603}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.26, y: -0.2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 70578441}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &417159934
 GameObject:
   m_ObjectHideFlags: 0
@@ -1823,11 +1857,11 @@ PrefabInstance:
       objectReference: {fileID: 2053116325}
     - target: {fileID: 7004395160434852048, guid: 19f3d5dbc0e2aff46a81845dc6b2330e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.81
+      value: -0.43
       objectReference: {fileID: 0}
     - target: {fileID: 7004395160434852048, guid: 19f3d5dbc0e2aff46a81845dc6b2330e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.16
+      value: 0.17
       objectReference: {fileID: 0}
     - target: {fileID: 7443368491174416811, guid: 19f3d5dbc0e2aff46a81845dc6b2330e, type: 3}
       propertyPath: m_Name

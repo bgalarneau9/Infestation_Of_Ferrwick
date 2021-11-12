@@ -16,6 +16,7 @@ public class Hero_Controller : MonoBehaviour
     [SerializeField]
     private GameObject _bloodSplatPrefab;
     public AudioClip deathsound;
+    [SerializeField]
     private GameObject heroPrefab;
 
 
