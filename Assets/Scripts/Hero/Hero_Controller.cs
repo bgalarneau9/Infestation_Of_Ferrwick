@@ -4,12 +4,20 @@ using UnityEngine;
 
 public class Hero_Controller : MonoBehaviour
 {
+    private int health = 100;
     public Rigidbody2D rb;
     public Vector2 moveBy;
     public Animator anim;
     public float moveSpeed;
     public GameObject HeroProjectilePrefab;
     public Transform HeroProjectileSpawnPoint;
+    [SerializeField]
+    private Transform _bloodSplatSpawn;
+    [SerializeField]
+    private GameObject _bloodSplatPrefab;
+    public AudioClip deathsound;
+    private GameObject heroPrefab;
+
 
     private void Start()
     {
@@ -43,6 +51,21 @@ public class Hero_Controller : MonoBehaviour
             var heroProjectileRigidBody = heroProjectile.GetComponent<Rigidbody2D>();
             heroProjectileRigidBody.velocity = Quaternion.Euler(0, 0, 0) * Vector3.right * 10; //10 == power
             Destroy(heroProjectile, 0.10f);
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy_Projectile")
+        {
+            health -= 10;
+            if (health <= 0)
+            {
+                GameObject bloodSplatter = Instantiate(_bloodSplatPrefab, _bloodSplatSpawn.position, Quaternion.identity);
+                bloodSplatter.GetComponent<ParticleSystem>().Play();
+                // 4 - Play Death sound
+                //MyAudioSrc.Play();
+                Destroy(heroPrefab);
+            }
         }
     }
 }

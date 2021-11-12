@@ -16,12 +16,19 @@ public class EnemySpellcasterController : MonoBehaviour
     public Animator anim;
     public GameObject EnemyProjectilePrefab;
     public Transform EnemyProjectileSpawnPoint;
+    private int Timer = 0;
 
     void Start()
     {
     }
     private void Update()
     {
+        Timer += 1;
+        if (Timer > 1000)
+        {
+            attack();
+            Timer = 0;
+        }
     }
 
     private void attack()
@@ -29,8 +36,8 @@ public class EnemySpellcasterController : MonoBehaviour
         anim.Play("Enemy_Spellcaster_Attack");
         var projectile = Instantiate(EnemyProjectilePrefab, EnemyProjectileSpawnPoint.position, Quaternion.identity) as GameObject;
         var projectileRigidBody = projectile.GetComponent<Rigidbody2D>();
-        projectileRigidBody.velocity = Quaternion.Euler(0, 0, 0) * Vector3.right * 10; //10 == power
-        Destroy(projectile, 0.25f);
+        projectileRigidBody.velocity = Quaternion.Euler(0, 0, 0) * Vector3.left * 15; //10 == power
+        Destroy(projectile, 0.20f);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

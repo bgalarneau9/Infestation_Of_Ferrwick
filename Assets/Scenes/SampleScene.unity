@@ -1821,6 +1821,14 @@ PrefabInstance:
       propertyPath: EnemyProjectileSpawnPoint
       value: 
       objectReference: {fileID: 2053116325}
+    - target: {fileID: 7004395160434852048, guid: 19f3d5dbc0e2aff46a81845dc6b2330e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.81
+      objectReference: {fileID: 0}
+    - target: {fileID: 7004395160434852048, guid: 19f3d5dbc0e2aff46a81845dc6b2330e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.16
+      objectReference: {fileID: 0}
     - target: {fileID: 7443368491174416811, guid: 19f3d5dbc0e2aff46a81845dc6b2330e, type: 3}
       propertyPath: m_Name
       value: Enemy_Spellcaster
