@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &151389603
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 151389604}
+  m_Layer: 0
+  m_Name: BloodSplatSpawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &151389604
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 151389603}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.26, y: -0.2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 983475619319321756}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &983475619319321747
 GameObject:
   m_ObjectHideFlags: 0
@@ -11,10 +41,9 @@ GameObject:
   - component: {fileID: 983475619319321756}
   - component: {fileID: 983475619319321757}
   - component: {fileID: 983475619319321746}
-  - component: {fileID: 983475619319321752}
   - component: {fileID: 983475619319321758}
-  - component: {fileID: 983475619319321759}
   - component: {fileID: 983475619319321753}
+  - component: {fileID: 70578440}
   m_Layer: 0
   m_Name: Hero
   m_TagString: Untagged
@@ -34,6 +63,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7116136322914627890}
+  - {fileID: 151389604}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -107,22 +137,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &983475619319321752
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 983475619319321747}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bde8d5baf592b748bb7b8d814ca465e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 0}
-  moveBy: {x: 0, y: 0}
-  anim: {fileID: 983475619319321746}
-  moveSpeed: 0
 --- !u!50 &983475619319321758
 Rigidbody2D:
   serializedVersion: 4
@@ -144,22 +158,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &983475619319321759
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 983475619319321747}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bde8d5baf592b748bb7b8d814ca465e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 983475619319321758}
-  moveBy: {x: 0, y: 0}
-  anim: {fileID: 983475619319321746}
-  moveSpeed: 3.5
 --- !u!61 &983475619319321753
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -186,6 +184,28 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.88, y: 1.04}
   m_EdgeRadius: 0
+--- !u!114 &70578440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 983475619319321747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bde8d5baf592b748bb7b8d814ca465e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 983475619319321758}
+  moveBy: {x: 0, y: 0}
+  anim: {fileID: 983475619319321746}
+  moveSpeed: 3
+  HeroProjectilePrefab: {fileID: 0}
+  HeroProjectileSpawnPoint: {fileID: 7116136322914627890}
+  _bloodSplatSpawn: {fileID: 151389604}
+  _bloodSplatPrefab: {fileID: 0}
+  deathsound: {fileID: 0}
+  heroPrefab: {fileID: 983475619319321747}
 --- !u!1 &3706345423563539482
 GameObject:
   m_ObjectHideFlags: 0
