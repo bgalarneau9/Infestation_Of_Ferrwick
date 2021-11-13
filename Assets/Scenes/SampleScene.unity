@@ -357,6 +357,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 898150b098ede594da5302e6b96ec263, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameMusic: {fileID: 0}
 --- !u!114 &546931872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -553,11 +554,11 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 7c514f19711b86b4cb5793b796156bba, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -646,12 +647,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 556128861}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -9.1, y: -3.73, z: -1.1087264}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 3, y: -15, z: -0.91441345}
+  m_LocalScale: {x: 0.8247422, y: 0.8247422, z: 0.8247422}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_Father: {fileID: 862114370}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &621260869
 GameObject:
@@ -1084,6 +1085,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 551166925}
+  - {fileID: 556128863}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1256,6 +1258,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!212 &1093749349 stripped
+SpriteRenderer:
+  m_CorrespondingSourceObject: {fileID: 7443368491174416815, guid: 19f3d5dbc0e2aff46a81845dc6b2330e, type: 3}
+  m_PrefabInstance: {fileID: 7443368491417000586}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1484434221
 GameObject:
   m_ObjectHideFlags: 0
@@ -1338,6 +1345,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!82 &1558011364 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 1991580176, guid: d43528eec1fda2c4ca669f21dc984bba, type: 3}
+  m_PrefabInstance: {fileID: 983475619255674261}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1826760683
 GameObject:
   m_ObjectHideFlags: 0
@@ -1647,6 +1659,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 70578440, guid: d43528eec1fda2c4ca669f21dc984bba, type: 3}
+      propertyPath: deathsound
+      value: 
+      objectReference: {fileID: 8300000, guid: 1b55110117a05444dad16f46f8b1e855, type: 3}
+    - target: {fileID: 70578440, guid: d43528eec1fda2c4ca669f21dc984bba, type: 3}
+      propertyPath: heroAudioSource
+      value: 
+      objectReference: {fileID: 1558011364}
+    - target: {fileID: 70578440, guid: d43528eec1fda2c4ca669f21dc984bba, type: 3}
       propertyPath: _bloodSplatPrefab
       value: 
       objectReference: {fileID: 822909973}
@@ -1830,6 +1850,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 267881250, guid: 19f3d5dbc0e2aff46a81845dc6b2330e, type: 3}
+      propertyPath: sr
+      value: 
+      objectReference: {fileID: 1093749349}
     - target: {fileID: 267881250, guid: 19f3d5dbc0e2aff46a81845dc6b2330e, type: 3}
       propertyPath: _bloodSplatPrefab
       value: 

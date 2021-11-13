@@ -6,7 +6,11 @@ public class EnemySpellcasterController : MonoBehaviour
 {
     private int health = 100;
     [SerializeField]
+    private SpriteRenderer sr;
+    [SerializeField]
     private Rigidbody2D rb;
+    [SerializeField]
+    private BoxCollider2D bc;
     [SerializeField]
     private GameObject spellCasterPrefab;
     [SerializeField]
@@ -21,6 +25,7 @@ public class EnemySpellcasterController : MonoBehaviour
     public GameObject EnemyProjectilePrefab;
     public Transform EnemyProjectileSpawnPoint;
     private int Timer = 0;
+    bool isAlive = true;
 
     void Start()
     {
@@ -29,10 +34,12 @@ public class EnemySpellcasterController : MonoBehaviour
     private void Update()
     {
         Timer += 1;
-        if (Timer > 1000)
+        //Dead spellcasters can't attack
+        if (Timer > 1000 && isAlive == true)
         {
             attack();
             Timer = 0;
+
         }
     }
 
@@ -50,12 +57,20 @@ public class EnemySpellcasterController : MonoBehaviour
         if (collision.gameObject.tag == "Projectile")
         {
             health -= 25;
-            if ( health <= 0)
+            if ( health <= 0 && isAlive == true)
             {
                 GameObject bloodSplatter = Instantiate(_bloodSplatPrefab, _bloodSplatSpawn.position, Quaternion.identity);
                 bloodSplatter.GetComponent<ParticleSystem>().Play();
                 enemyAudioSource.clip = deathsound;
-                enemyAudioSource.Play();
+                enemyAudioSource.PlayOneShot(deathsound);
+                bc.enabled = false;
+                //Make spellcaster invisible while death audio plays
+                sr.forceRenderingOff = true;
+                //Make sure spellcaster can't throw out an attack when he is dead
+                isAlive = false;
+                //Wait in this empty loop until death audio plays
+                while(enemyAudioSource.isPlaying) { }
+                //Remove the spellcaster
                 Destroy(spellCasterPrefab);
             }
         }

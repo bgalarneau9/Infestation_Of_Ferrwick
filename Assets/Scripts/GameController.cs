@@ -15,6 +15,7 @@ public class GameController : MonoBehaviour
     private Button buttonBack;
     private Text textHealth;
     private AudioClip GameMusicClip;
+    [SerializeField]
     private AudioSource GameMusic;
 
     private void Awake()

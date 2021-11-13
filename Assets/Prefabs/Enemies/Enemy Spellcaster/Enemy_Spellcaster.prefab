@@ -334,11 +334,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 354587733}
+  bc: {fileID: 7443368491174416809}
   spellCasterPrefab: {fileID: 7443368491174416811}
   _bloodSplatSpawn: {fileID: 7443368490544402927}
   _bloodSplatPrefab: {fileID: 0}
-  deathclip: {fileID: 8300000, guid: 1b55110117a05444dad16f46f8b1e855, type: 3}
-  deathsound: {fileID: 1408118561}
+  deathsound: {fileID: 8300000, guid: 1b55110117a05444dad16f46f8b1e855, type: 3}
+  enemyAudioSource: {fileID: 1408118561}
   anim: {fileID: 7443368491174416814}
   EnemyProjectilePrefab: {fileID: 0}
   EnemyProjectileSpawnPoint: {fileID: 7004395160434852048}
