@@ -41,6 +41,10 @@ public class EnemySpellcasterController : MonoBehaviour
             Timer = 0;
 
         }
+        if (isAlive == false && enemyAudioSource.isPlaying == false)
+        {
+            Destroy(spellCasterPrefab);
+        }
     }
 
     private void attack()
@@ -68,10 +72,6 @@ public class EnemySpellcasterController : MonoBehaviour
                 sr.forceRenderingOff = true;
                 //Make sure spellcaster can't throw out an attack when he is dead
                 isAlive = false;
-                //Wait in this empty loop until death audio plays
-                while(enemyAudioSource.isPlaying) { }
-                //Remove the spellcaster
-                Destroy(spellCasterPrefab);
             }
         }
     }
