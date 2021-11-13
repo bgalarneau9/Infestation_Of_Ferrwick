@@ -14,7 +14,6 @@ public class GameController : MonoBehaviour
     //Sample Scene
     private Button buttonBack;
     private Text textHealth;
-    public Hero_Controller Character;
     private AudioClip GameMusicClip;
     private AudioSource GameMusic;
 
@@ -48,10 +47,10 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (SceneManager.GetActiveScene().buildIndex == 0)
-        {
-            textHealth.text = Character.health.ToString();
-        }
+        //if (SceneManager.GetActiveScene().buildIndex == 0)
+        //{
+        //    textHealth.text = Character.health.ToString();
+        //}
     }
 
     private void InitializeComponents_Scene_Main_Menu()
