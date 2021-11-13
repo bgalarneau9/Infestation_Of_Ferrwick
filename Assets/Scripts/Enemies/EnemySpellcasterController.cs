@@ -35,7 +35,7 @@ public class EnemySpellcasterController : MonoBehaviour
     {
         Timer += 1;
         //Dead spellcasters can't attack
-        if (Timer > 1000 && isAlive == true)
+        if (Timer > 800 && isAlive == true)
         {
             attack();
             Timer = 0;
