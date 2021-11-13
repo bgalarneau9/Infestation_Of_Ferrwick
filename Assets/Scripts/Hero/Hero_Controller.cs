@@ -15,9 +15,12 @@ public class Hero_Controller : MonoBehaviour
     private Transform _bloodSplatSpawn;
     [SerializeField]
     private GameObject _bloodSplatPrefab;
-    public AudioClip deathsound;
     [SerializeField]
     private GameObject heroPrefab;
+    [SerializeField]
+    private AudioClip deathclip;
+    [SerializeField]
+    private AudioSource deathsound;
 
 
     private void Start()
@@ -58,13 +61,13 @@ public class Hero_Controller : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy_Projectile")
         {
-            health -= 10;
+            health -= 25;
             if (health <= 0)
             {
                 GameObject bloodSplatter = Instantiate(_bloodSplatPrefab, _bloodSplatSpawn.position, Quaternion.identity);
                 bloodSplatter.GetComponent<ParticleSystem>().Play();
-                // 4 - Play Death sound
-                //MyAudioSrc.Play();
+                deathsound.clip = deathclip;
+                deathsound.Play();
                 Destroy(heroPrefab);
             }
         }

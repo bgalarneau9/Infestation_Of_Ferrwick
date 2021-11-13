@@ -15,8 +15,8 @@ public class GameController : MonoBehaviour
     private Button buttonBack;
     private Text textHealth;
     public Hero_Controller Character;
-    [SerializeField]
-    private AudioSource GameMusicAudio;
+    private AudioClip GameMusicClip;
+    private AudioSource GameMusic;
 
     private void Awake()
     {
@@ -42,8 +42,6 @@ public class GameController : MonoBehaviour
         else if (SceneManager.GetActiveScene().buildIndex == 0)
         {
             InitializeComponents_Scene_Sample();
-            GameMusicAudio.Play();
-            GameMusicAudio.loop = true;
         }
     }
 
@@ -62,7 +60,10 @@ public class GameController : MonoBehaviour
         buttonPlayGame.onClick.AddListener(() => { onPlayGameClicked(); });
         buttonPlayerSelect = GameObject.Find("Button_Player_Select").GetComponent<Button>();
         buttonPlayerSelect.onClick.AddListener(() => { onPlayerSelectClicked(); });
-
+        GameMusic = GameObject.Find("Music_Source").GetComponent<AudioSource>();
+        GameMusic.clip = GameMusicClip;
+        GameMusic.Play();
+        GameMusic.loop = true;
     }
 
     public void InitializeComponents_Scene_Sample()
@@ -71,6 +72,10 @@ public class GameController : MonoBehaviour
         buttonBack = GameObject.Find("Button_Back").GetComponent<Button>();
         buttonBack.onClick.AddListener(() => { onButtonBackClicked(); });
         textHealth = GameObject.Find("Text_Health").GetComponent<Text>();
+        GameMusic = GameObject.Find("Music_Source").GetComponent<AudioSource>();
+        GameMusic.clip = GameMusicClip;
+        GameMusic.Play();
+        GameMusic.loop = true;
     }
 
     private void onButtonBackClicked()
