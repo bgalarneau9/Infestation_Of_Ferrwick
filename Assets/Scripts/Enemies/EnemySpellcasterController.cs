@@ -14,9 +14,9 @@ public class EnemySpellcasterController : MonoBehaviour
     [SerializeField]
     private GameObject _bloodSplatPrefab;
     [SerializeField]
-    private AudioClip deathclip;
+    private AudioClip deathsound;
     [SerializeField]
-    private AudioSource deathsound;
+    private AudioSource enemyAudioSource;
     public Animator anim;
     public GameObject EnemyProjectilePrefab;
     public Transform EnemyProjectileSpawnPoint;
@@ -54,8 +54,8 @@ public class EnemySpellcasterController : MonoBehaviour
             {
                 GameObject bloodSplatter = Instantiate(_bloodSplatPrefab, _bloodSplatSpawn.position, Quaternion.identity);
                 bloodSplatter.GetComponent<ParticleSystem>().Play();
-                deathsound.clip = deathclip;
-                deathsound.Play();
+                enemyAudioSource.clip = deathsound;
+                enemyAudioSource.Play();
                 Destroy(spellCasterPrefab);
             }
         }

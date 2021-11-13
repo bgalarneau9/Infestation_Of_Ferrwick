@@ -62,8 +62,8 @@ public class GameController : MonoBehaviour
         buttonPlayerSelect.onClick.AddListener(() => { onPlayerSelectClicked(); });
         GameMusic = GameObject.Find("Music_Source").GetComponent<AudioSource>();
         GameMusic.clip = GameMusicClip;
-        GameMusic.Play();
         GameMusic.loop = true;
+        GameMusic.Play();
     }
 
     public void InitializeComponents_Scene_Sample()
@@ -74,8 +74,8 @@ public class GameController : MonoBehaviour
         textHealth = GameObject.Find("Text_Health").GetComponent<Text>();
         GameMusic = GameObject.Find("Music_Source").GetComponent<AudioSource>();
         GameMusic.clip = GameMusicClip;
-        GameMusic.Play();
         GameMusic.loop = true;
+        GameMusic.Play();
     }
 
     private void onButtonBackClicked()

@@ -18,9 +18,9 @@ public class Hero_Controller : MonoBehaviour
     [SerializeField]
     private GameObject heroPrefab;
     [SerializeField]
-    private AudioClip deathclip;
+    private AudioClip deathsound;
     [SerializeField]
-    private AudioSource deathsound;
+    private AudioSource heroAudioSource;
 
 
     private void Start()
@@ -66,8 +66,8 @@ public class Hero_Controller : MonoBehaviour
             {
                 GameObject bloodSplatter = Instantiate(_bloodSplatPrefab, _bloodSplatSpawn.position, Quaternion.identity);
                 bloodSplatter.GetComponent<ParticleSystem>().Play();
-                deathsound.clip = deathclip;
-                deathsound.Play();
+                heroAudioSource.clip = deathsound;
+                heroAudioSource.Play();
                 Destroy(heroPrefab);
             }
         }
