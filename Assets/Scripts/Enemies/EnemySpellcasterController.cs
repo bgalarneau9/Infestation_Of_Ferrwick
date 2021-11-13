@@ -6,6 +6,8 @@ public class EnemySpellcasterController : MonoBehaviour
 {
     private int health = 100;
     [SerializeField]
+    private Rigidbody2D rb;
+    [SerializeField]
     private GameObject spellCasterPrefab;
     [SerializeField]
     private Transform _bloodSplatSpawn;
@@ -20,6 +22,7 @@ public class EnemySpellcasterController : MonoBehaviour
 
     void Start()
     {
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
     }
     private void Update()
     {
