@@ -1633,14 +1633,6 @@ PrefabInstance:
       propertyPath: HeroProjectilePrefab
       value: 
       objectReference: {fileID: 2872052419323693477}
-    - target: {fileID: 519420031, guid: d43528eec1fda2c4ca669f21dc984bba, type: 3}
-      propertyPath: orthographic
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 519420031, guid: d43528eec1fda2c4ca669f21dc984bba, type: 3}
-      propertyPath: near clip plane
-      value: 0.3
-      objectReference: {fileID: 0}
     - target: {fileID: 983475619319321747, guid: d43528eec1fda2c4ca669f21dc984bba, type: 3}
       propertyPath: m_Name
       value: Hero
@@ -1763,10 +1755,6 @@ PrefabInstance:
     - target: {fileID: 6523681506718303561, guid: 850cd20c6183c6b4ab7d4375ca0758ab, type: 3}
       propertyPath: m_Name
       value: Spellcaster_Projectile
-      objectReference: {fileID: 0}
-    - target: {fileID: 6523681506718303564, guid: 850cd20c6183c6b4ab7d4375ca0758ab, type: 3}
-      propertyPath: m_GravityScale
-      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6523681506718303567, guid: 850cd20c6183c6b4ab7d4375ca0758ab, type: 3}
       propertyPath: m_RootOrder
