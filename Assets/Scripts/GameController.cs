@@ -43,6 +43,7 @@ public class GameController : MonoBehaviour
         {
             InitializeComponents_Scene_Sample();
             GameMusicAudio.Play();
+            GameMusicAudio.loop = true;
         }
     }
 
