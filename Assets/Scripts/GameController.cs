@@ -15,6 +15,9 @@ public class GameController : MonoBehaviour
     private Button buttonBack;
     private Text textHealth;
     public Hero_Controller Character;
+    [SerializeField]
+    private AudioSource GameMusicAudio;
+
     private void Awake()
     {
         if (Instance == null)
@@ -39,6 +42,7 @@ public class GameController : MonoBehaviour
         else if (SceneManager.GetActiveScene().buildIndex == 0)
         {
             InitializeComponents_Scene_Sample();
+            GameMusicAudio.Play();
         }
     }
 
