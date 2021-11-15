@@ -409,6 +409,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameMusic: {fileID: 358822832}
+  darkKnightPrefab: {fileID: 983475619319321747, guid: d43528eec1fda2c4ca669f21dc984bba, type: 3}
+  silverKnightPrefab: {fileID: 0}
+  spawnPoint: {fileID: 0}
 --- !u!1 &927115676
 GameObject:
   m_ObjectHideFlags: 0

@@ -256,7 +256,7 @@ GameObject:
   - component: {fileID: 70578440}
   m_Layer: 0
   m_Name: Hero
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -413,13 +413,13 @@ MonoBehaviour:
   moveBy: {x: 0, y: 0}
   anim: {fileID: 983475619319321746}
   moveSpeed: 3
-  HeroProjectilePrefab: {fileID: 0}
+  HeroProjectilePrefab: {fileID: 7762147205223785686, guid: 2f6c12346e8c6db449779d7c908fe848, type: 3}
   HeroProjectileSpawnPoint: {fileID: 7116136322914627890}
   _bloodSplatSpawn: {fileID: 151389604}
-  _bloodSplatPrefab: {fileID: 0}
+  _bloodSplatPrefab: {fileID: 654515224440077745, guid: 4949d58204960d342be56bbb0ea0e928, type: 3}
   heroPrefab: {fileID: 983475619319321747}
-  deathclip: {fileID: 8300000, guid: 1b55110117a05444dad16f46f8b1e855, type: 3}
-  deathsound: {fileID: 1991580176}
+  deathsound: {fileID: 8300000, guid: 1b55110117a05444dad16f46f8b1e855, type: 3}
+  heroAudioSource: {fileID: 0}
 --- !u!1 &3706345423563539482
 GameObject:
   m_ObjectHideFlags: 0

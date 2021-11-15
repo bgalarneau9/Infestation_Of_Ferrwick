@@ -20,6 +20,14 @@ public class GameController : MonoBehaviour
     //Player Select
     private Button buttonDarkKnight;
     private Button buttonSilverKnight;
+    //Deal with player selection
+    int knightChosen = 0;
+    [SerializeField]
+    private GameObject darkKnightPrefab;
+    [SerializeField]
+    private GameObject silverKnightPrefab;
+    [SerializeField]
+    private GameObject spawnPoint;
 
     private void Awake()
     {
@@ -77,11 +85,23 @@ public class GameController : MonoBehaviour
     {
         buttonBack = GameObject.Find("Button_Back").GetComponent<Button>();
         buttonBack.onClick.AddListener(() => { onButtonBackClicked(); });
-        textHealth = GameObject.Find("Text_Health").GetComponent<Text>();
         GameMusic = GameObject.Find("Music_Source").GetComponent<AudioSource>();
         GameMusic.clip = GameMusicClip;
         GameMusic.loop = true;
         GameMusic.Play();
+        int PlayerNumber = GameObject.FindGameObjectsWithTag("Player").Length;
+        if(PlayerNumber < 1)
+        {
+            if (knightChosen == 0)
+            {
+                //Instantiate Dark Knight
+                Instantiate(darkKnightPrefab, spawnPoint.transform);
+            }
+            else if (knightChosen == 1)
+            {
+                //Instantiate Silver
+            }
+        }
     }
     public void InitializeComponents_Scene_Player_Select()
     {
@@ -93,12 +113,12 @@ public class GameController : MonoBehaviour
 
     private void onButtonSilverKnightClicked()
     {
-        Debug.Log("SN");
+        knightChosen = 1;
     }
 
     private void onButtonDarkKnightClicked()
     {
-        Debug.Log("DN");
+        knightChosen = 0;
     }
 
     private void onButtonBackClicked()

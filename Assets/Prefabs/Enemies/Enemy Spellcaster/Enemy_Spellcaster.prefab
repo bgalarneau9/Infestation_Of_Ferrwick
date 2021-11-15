@@ -333,15 +333,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6c5e944192869b428619ab21a5a59f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sr: {fileID: 0}
   rb: {fileID: 354587733}
   bc: {fileID: 7443368491174416809}
   spellCasterPrefab: {fileID: 7443368491174416811}
   _bloodSplatSpawn: {fileID: 7443368490544402927}
-  _bloodSplatPrefab: {fileID: 0}
+  _bloodSplatPrefab: {fileID: 654515224440077745, guid: 4949d58204960d342be56bbb0ea0e928, type: 3}
   deathsound: {fileID: 8300000, guid: 1b55110117a05444dad16f46f8b1e855, type: 3}
   enemyAudioSource: {fileID: 1408118561}
   anim: {fileID: 7443368491174416814}
-  EnemyProjectilePrefab: {fileID: 0}
+  EnemyProjectilePrefab: {fileID: 6523681506718303561, guid: 850cd20c6183c6b4ab7d4375ca0758ab, type: 3}
   EnemyProjectileSpawnPoint: {fileID: 7004395160434852048}
 --- !u!50 &354587733
 Rigidbody2D:
