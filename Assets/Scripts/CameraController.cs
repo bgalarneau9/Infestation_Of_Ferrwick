@@ -11,7 +11,6 @@ public class CameraController : MonoBehaviour
     void Start()
     {
         player = GameObject.FindWithTag("Player").GetComponent<Transform>();
-        //player.position = new Vector3(0, 0, -10);
     }
 
     // Update is called once per frame
@@ -20,7 +19,7 @@ public class CameraController : MonoBehaviour
         numberOfPlayerPrefabs = GameObject.FindGameObjectsWithTag("Player").Length;
         if (numberOfPlayerPrefabs == 1)
         {
-            transform.position = new Vector3(player.position.x + offset.x, player.position.y + offset.y, -10);
+            transform.position = new Vector3(player.position.x + offset.x, Mathf.Clamp(player.position.y + offset.y, -0.32f, 100), -10);
         }
     }
 }
