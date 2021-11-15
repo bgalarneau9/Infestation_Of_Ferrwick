@@ -17,10 +17,10 @@ public class GameController : MonoBehaviour
     private Button buttonDarkKnight;
     private Button buttonSilverKnight;
     //Deal with player selection
+    [SerializeField]
     private GameObject darkKnight;
     private GameObject silverKnight;
     private int knightChosen = 0;
-    private Transform spawnPoint;
 
     private void Awake()
     {
@@ -71,16 +71,19 @@ public class GameController : MonoBehaviour
     {
         buttonBack = GameObject.Find("Button_Back").GetComponent<Button>();
         buttonBack.onClick.AddListener(() => { onButtonBackClicked(); });
-        spawnPoint = GameObject.Find("Player_Spawn_Point").GetComponent<Transform>();
-        if (knightChosen == 0)
+        int NumberOfPlayers = GameObject.FindGameObjectsWithTag("Player").Length;
+        //Only instantiate one player
+        if (NumberOfPlayers < 1 )
         {
-            //Instantiate Dark Knight
-            darkKnight = Resources.Load("Hero") as GameObject;
-            Instantiate(darkKnight, spawnPoint);
-        }
-        else if (knightChosen == 1)
-        {
-            //Instantiate Silver
+            if (knightChosen == 0)
+            {
+                //Instantiate Dark Knight
+                Instantiate(darkKnight, new Vector2(0,0), Quaternion.identity);
+            }
+            else if (knightChosen == 1)
+            {
+                //Instantiate Silver
+            }
         }
     }
     public void InitializeComponents_Scene_Player_Select()

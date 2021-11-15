@@ -216,7 +216,6 @@ GameObject:
   - component: {fileID: 424014826}
   - component: {fileID: 424014825}
   - component: {fileID: 424014824}
-  - component: {fileID: 424014823}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -224,18 +223,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &424014823
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 424014822}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c43207b4f4969ba4587bdf9da3fa216a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!81 &424014824
 AudioListener:
   m_ObjectHideFlags: 0
@@ -448,10 +435,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 898150b098ede594da5302e6b96ec263, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameMusic: {fileID: 0}
-  darkKnightPrefab: {fileID: 7118067203466299472, guid: d43528eec1fda2c4ca669f21dc984bba, type: 3}
-  silverKnightPrefab: {fileID: 0}
-  spawnPoint: {fileID: 867955926}
+  darkKnight: {fileID: 7118067203466299472, guid: d43528eec1fda2c4ca669f21dc984bba, type: 3}
 --- !u!114 &546931872
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1207,7 +1191,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 867955926}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.42, y: 0.77, z: -225.34685}
+  m_LocalPosition: {x: 3.52, y: 1.25, z: -225.34685}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
