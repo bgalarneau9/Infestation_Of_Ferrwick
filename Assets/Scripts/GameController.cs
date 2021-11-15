@@ -17,6 +17,9 @@ public class GameController : MonoBehaviour
     private AudioClip GameMusicClip;
     [SerializeField]
     private AudioSource GameMusic;
+    //Player Select
+    private Button buttonDarkKnight;
+    private Button buttonSilverKnight;
 
     private void Awake()
     {
@@ -72,7 +75,6 @@ public class GameController : MonoBehaviour
 
     public void InitializeComponents_Scene_Sample()
     {
-        Debug.Log("Sample Scene initialized");
         buttonBack = GameObject.Find("Button_Back").GetComponent<Button>();
         buttonBack.onClick.AddListener(() => { onButtonBackClicked(); });
         textHealth = GameObject.Find("Text_Health").GetComponent<Text>();
@@ -83,23 +85,33 @@ public class GameController : MonoBehaviour
     }
     public void InitializeComponents_Scene_Player_Select()
     {
-        //INITIALIZE
+        buttonDarkKnight = GameObject.Find("Button_Dark_Knight").GetComponent<Button>();
+        buttonDarkKnight.onClick.AddListener(() => { onButtonDarkKnightClicked(); });
+        buttonSilverKnight = GameObject.Find("Button_Silver_Knight").GetComponent<Button>();
+        buttonSilverKnight.onClick.AddListener(() => { onButtonSilverKnightClicked(); });
+    }
+
+    private void onButtonSilverKnightClicked()
+    {
+        Debug.Log("SN");
+    }
+
+    private void onButtonDarkKnightClicked()
+    {
+        Debug.Log("DN");
     }
 
     private void onButtonBackClicked()
     {
         SceneManager.LoadScene(1);
-        Debug.Log("Loaded main menu scene!");
     }
 
     private void onPlayGameClicked()
     {
         SceneManager.LoadScene(0);
-        Debug.Log("Loaded game scene!");
     }
     private void onPlayerSelectClicked()
     {
         SceneManager.LoadScene(2);
-        Debug.Log("Loaded player select scene!");
     }
 }
