@@ -13,21 +13,14 @@ public class GameController : MonoBehaviour
     private Button buttonPlayerSelect;
     //Sample Scene
     private Button buttonBack;
-    private Text textHealth;
-    private AudioClip GameMusicClip;
-    [SerializeField]
-    private AudioSource GameMusic;
     //Player Select
     private Button buttonDarkKnight;
     private Button buttonSilverKnight;
     //Deal with player selection
-    int knightChosen = 0;
-    [SerializeField]
-    private GameObject darkKnightPrefab;
-    [SerializeField]
-    private GameObject silverKnightPrefab;
-    [SerializeField]
-    private GameObject spawnPoint;
+    private GameObject darkKnight;
+    private GameObject silverKnight;
+    private int knightChosen = 0;
+    private Transform spawnPoint;
 
     private void Awake()
     {
@@ -63,10 +56,7 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (SceneManager.GetActiveScene().buildIndex == 0)
-        //{
-        //    textHealth.text = Character.health.ToString();
-        //}
+
     }
 
     private void InitializeComponents_Scene_Main_Menu()
@@ -75,32 +65,22 @@ public class GameController : MonoBehaviour
         buttonPlayGame.onClick.AddListener(() => { onPlayGameClicked(); });
         buttonPlayerSelect = GameObject.Find("Button_Player_Select").GetComponent<Button>();
         buttonPlayerSelect.onClick.AddListener(() => { onPlayerSelectClicked(); });
-        GameMusic = GameObject.Find("Music_Source").GetComponent<AudioSource>();
-        GameMusic.clip = GameMusicClip;
-        GameMusic.loop = true;
-        GameMusic.Play();
     }
 
     public void InitializeComponents_Scene_Sample()
     {
         buttonBack = GameObject.Find("Button_Back").GetComponent<Button>();
         buttonBack.onClick.AddListener(() => { onButtonBackClicked(); });
-        GameMusic = GameObject.Find("Music_Source").GetComponent<AudioSource>();
-        GameMusic.clip = GameMusicClip;
-        GameMusic.loop = true;
-        GameMusic.Play();
-        int PlayerNumber = GameObject.FindGameObjectsWithTag("Player").Length;
-        if(PlayerNumber < 1)
+        spawnPoint = GameObject.Find("Player_Spawn_Point").GetComponent<Transform>();
+        if (knightChosen == 0)
         {
-            if (knightChosen == 0)
-            {
-                //Instantiate Dark Knight
-                Instantiate(darkKnightPrefab, spawnPoint.transform);
-            }
-            else if (knightChosen == 1)
-            {
-                //Instantiate Silver
-            }
+            //Instantiate Dark Knight
+            darkKnight = Resources.Load("Hero") as GameObject;
+            Instantiate(darkKnight, spawnPoint);
+        }
+        else if (knightChosen == 1)
+        {
+            //Instantiate Silver
         }
     }
     public void InitializeComponents_Scene_Player_Select()
