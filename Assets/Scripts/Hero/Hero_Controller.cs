@@ -51,6 +51,7 @@ public class Hero_Controller : MonoBehaviour
         {
             attack();
             anim.Play("Hero_Attack_Right");
+            anim.Play("Hero_Silver_Right");
         }
     }
     public void attack()

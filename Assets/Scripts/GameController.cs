@@ -85,6 +85,7 @@ public class GameController : MonoBehaviour
             else if (knightChosen == 1)
             {
                 //Instantiate Silver
+                Instantiate(silverKnight, new Vector2(0, 0), Quaternion.identity);
             }
         }
     }
