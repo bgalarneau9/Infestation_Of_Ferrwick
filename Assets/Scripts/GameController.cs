@@ -16,9 +16,11 @@ public class GameController : MonoBehaviour
     //Player Select
     private Button buttonDarkKnight;
     private Button buttonSilverKnight;
+    private Button buttonBackPlayerSelect;
     //Deal with player selection
     [SerializeField]
     private GameObject darkKnight;
+    [SerializeField]
     private GameObject silverKnight;
     private int knightChosen = 0;
 
@@ -92,6 +94,8 @@ public class GameController : MonoBehaviour
         buttonDarkKnight.onClick.AddListener(() => { onButtonDarkKnightClicked(); });
         buttonSilverKnight = GameObject.Find("Button_Silver_Knight").GetComponent<Button>();
         buttonSilverKnight.onClick.AddListener(() => { onButtonSilverKnightClicked(); });
+        buttonBackPlayerSelect = GameObject.Find("Button_Back").GetComponent<Button>();
+        buttonBackPlayerSelect.onClick.AddListener(() => { onButtonBackClicked(); });
     }
 
     private void onButtonSilverKnightClicked()

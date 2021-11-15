@@ -409,6 +409,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   darkKnight: {fileID: 7118067203466299472, guid: d43528eec1fda2c4ca669f21dc984bba, type: 3}
+  silverKnight: {fileID: 614806875538037759, guid: 1ffa0b2c314cddb4e82c72e123fff94e, type: 3}
 --- !u!1 &927115676
 GameObject:
   m_ObjectHideFlags: 0
@@ -750,8 +751,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0000038147, y: -0.00049925}
-  m_SizeDelta: {x: 800, y: 344.86}
+  m_AnchoredPosition: {x: -0.0000038147, y: -0.00021696}
+  m_SizeDelta: {x: 800, y: 367.4}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1839078560
 MonoBehaviour:
