@@ -11,6 +11,7 @@ public class Hero_Controller : MonoBehaviour
     public float moveSpeed;
     public GameObject HeroProjectilePrefab;
     public Transform HeroProjectileSpawnPoint;
+    private bool isAlive;
     [SerializeField]
     private Transform _bloodSplatSpawn;
     [SerializeField]
@@ -21,11 +22,14 @@ public class Hero_Controller : MonoBehaviour
     private AudioClip deathsound;
     [SerializeField]
     private AudioSource heroAudioSource;
+    [SerializeField]
+    private SpriteRenderer sr;
 
 
     private void Start()
     {
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+        isAlive = true;
     }
     // Update is called once per frame
     void Update()
@@ -35,6 +39,10 @@ public class Hero_Controller : MonoBehaviour
         anim.SetFloat("Horizontal", moveBy.x);
         anim.SetFloat("Vertical", moveBy.y);
         anim.SetFloat("speed", moveBy.sqrMagnitude);
+        if (isAlive == false && heroAudioSource.isPlaying == false)
+        {
+            Destroy(heroPrefab);
+        }
     }
     private void FixedUpdate()
     {
@@ -67,7 +75,8 @@ public class Hero_Controller : MonoBehaviour
                 bloodSplatter.GetComponent<ParticleSystem>().Play();
                 heroAudioSource.clip = deathsound;
                 heroAudioSource.Play();
-                Destroy(heroPrefab);
+                sr.forceRenderingOff = true;
+                isAlive = false;
             }
         }
     }

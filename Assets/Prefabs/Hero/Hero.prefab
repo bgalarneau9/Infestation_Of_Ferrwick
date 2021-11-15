@@ -209,6 +209,7 @@ MonoBehaviour:
   heroPrefab: {fileID: 7118067203466299472}
   deathsound: {fileID: 8300000, guid: 1b55110117a05444dad16f46f8b1e855, type: 3}
   heroAudioSource: {fileID: 8029484608272434899}
+  sr: {fileID: 7118067203466299486}
 --- !u!1 &8029484608272434893
 GameObject:
   m_ObjectHideFlags: 0
