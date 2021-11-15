@@ -43,6 +43,10 @@ public class GameController : MonoBehaviour
         {
             InitializeComponents_Scene_Sample();
         }
+        else if (SceneManager.GetActiveScene().buildIndex == 2)
+        {
+            InitializeComponents_Scene_Player_Select();
+        }
     }
 
     // Update is called once per frame
@@ -77,20 +81,25 @@ public class GameController : MonoBehaviour
         GameMusic.loop = true;
         GameMusic.Play();
     }
+    public void InitializeComponents_Scene_Player_Select()
+    {
+        //INITIALIZE
+    }
 
     private void onButtonBackClicked()
     {
         SceneManager.LoadScene(1);
-        Debug.Log("Load Main Menu Scene!");
+        Debug.Log("Loaded main menu scene!");
     }
 
     private void onPlayGameClicked()
     {
         SceneManager.LoadScene(0);
-        Debug.Log("Load game scene!");
+        Debug.Log("Loaded game scene!");
     }
     private void onPlayerSelectClicked()
     {
-        Debug.Log("Load player select scene!");
+        SceneManager.LoadScene(2);
+        Debug.Log("Loaded player select scene!");
     }
 }
