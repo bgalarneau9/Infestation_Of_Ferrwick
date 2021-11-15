@@ -4,19 +4,17 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    private GameObject player;
-    private Transform playerTransform;
+    private Transform player;
     private Vector3 offset;
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.Find("Hero(Clone").GetComponent<GameObject>();
-        playerTransform = player.transform;
+        player = GameObject.FindWithTag("Player").GetComponent<Transform>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.position = new Vector3(playerTransform.position.x + offset.x, playerTransform.position.y + offset.y, offset.z); // Camera follows the player with specified offset position   
+        transform.position = new Vector2(player.position.x + offset.x, player.position.y + offset.y);
     }
 }

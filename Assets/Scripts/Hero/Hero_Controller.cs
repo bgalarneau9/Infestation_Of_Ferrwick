@@ -32,7 +32,6 @@ public class Hero_Controller : MonoBehaviour
     {
         moveBy.x = Input.GetAxisRaw("Horizontal");
         moveBy.y = Input.GetAxisRaw("Vertical");
-        Debug.Log("X = " + moveBy.x + " Y = " + moveBy.y);
         anim.SetFloat("Horizontal", moveBy.x);
         anim.SetFloat("Vertical", moveBy.y);
         anim.SetFloat("speed", moveBy.sqrMagnitude);
