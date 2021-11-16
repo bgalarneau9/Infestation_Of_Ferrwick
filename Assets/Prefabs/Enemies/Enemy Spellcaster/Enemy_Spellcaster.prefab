@@ -333,7 +333,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6c5e944192869b428619ab21a5a59f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sr: {fileID: 0}
+  sr: {fileID: 7443368491174416815}
   rb: {fileID: 354587733}
   bc: {fileID: 7443368491174416809}
   spellCasterPrefab: {fileID: 7443368491174416811}
