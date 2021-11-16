@@ -5,6 +5,8 @@ using UnityEngine;
 public class Hero_Controller : MonoBehaviour
 {
     public int health = 100;
+    [SerializeField]
+    private int heroType;
     public Rigidbody2D rb;
     public Vector2 moveBy;
     public Animator anim;
@@ -50,8 +52,14 @@ public class Hero_Controller : MonoBehaviour
         if (Input.GetKey(KeyCode.Space))
         {
             attack();
-            anim.Play("Hero_Attack_Right");
-            anim.Play("Hero_Silver_Right");
+            if (heroType == 0)
+            {
+                anim.Play("Hero_Attack_Right");
+            }
+            else
+            {
+                anim.Play("Hero_Silver_Attack_Right");
+            }
         }
     }
     public void attack()

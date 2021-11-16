@@ -121,6 +121,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  heroType: 1
   rb: {fileID: 3062344905659913777}
   moveBy: {x: 0, y: 0}
   anim: {fileID: 614806875538037754}
