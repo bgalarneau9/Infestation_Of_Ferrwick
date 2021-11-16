@@ -92,6 +92,15 @@ public class Hero_Controller : MonoBehaviour
                 isAlive = false;
             }
         }
+        else if (collision.gameObject.tag == "Kill_Zone") {
+            health = 0;
+            GameObject bloodSplatter = Instantiate(_bloodSplatPrefab, _bloodSplatSpawn.position, Quaternion.identity);
+            bloodSplatter.GetComponent<ParticleSystem>().Play();
+            heroAudioSource.clip = deathsound;
+            heroAudioSource.Play();
+            sr.forceRenderingOff = true;
+            isAlive = false;
+        }
     }
 }
 
