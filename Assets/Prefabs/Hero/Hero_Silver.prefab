@@ -125,7 +125,7 @@ MonoBehaviour:
   rb: {fileID: 3062344905659913777}
   moveBy: {x: 0, y: 0}
   anim: {fileID: 614806875538037754}
-  moveSpeed: 0
+  moveSpeed: 3
   HeroProjectilePrefab: {fileID: 7762147205223785686, guid: 2f6c12346e8c6db449779d7c908fe848, type: 3}
   HeroProjectileSpawnPoint: {fileID: 614806875622904415}
   _bloodSplatSpawn: {fileID: 614806876596368693}
