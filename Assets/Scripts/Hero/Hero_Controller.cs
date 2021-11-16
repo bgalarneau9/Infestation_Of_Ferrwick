@@ -1,10 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class Hero_Controller : MonoBehaviour
 {
     public int health = 100;
+    private Text healthText;
     [SerializeField]
     private int heroType;
     public Rigidbody2D rb;
@@ -32,6 +33,7 @@ public class Hero_Controller : MonoBehaviour
     {
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         isAlive = true;
+        healthText = GameObject.Find("Health_Text").GetComponent<Text>();
     }
     // Update is called once per frame
     void Update()
@@ -42,6 +44,7 @@ public class Hero_Controller : MonoBehaviour
         anim.SetFloat("Horizontal", moveBy.x);
         anim.SetFloat("Vertical", moveBy.y);
         anim.SetFloat("speed", moveBy.sqrMagnitude);
+        healthText.text = health.ToString();
         if (isAlive == false && heroAudioSource.isPlaying == false)
         {
             Destroy(heroPrefab);
