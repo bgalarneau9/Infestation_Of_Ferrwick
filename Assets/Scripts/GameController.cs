@@ -20,6 +20,8 @@ public class GameController : MonoBehaviour
     private Button buttonBackPlayerSelect;
     //Game Over
     private Button buttonTryAgain;
+    //Level Cleared
+    private Button buttonLevelCleared;
     //Deal with player selection
     [SerializeField]
     private GameObject darkKnight;
@@ -60,6 +62,10 @@ public class GameController : MonoBehaviour
         {
             InitializeComponents_Scene_Game_Over();
         }
+        else if (SceneManager.GetActiveScene().buildIndex == 4)
+        {
+            InitializeComponents_Scene_Level_Cleared();
+        }
     }
 
     // Update is called once per frame
@@ -71,6 +77,11 @@ public class GameController : MonoBehaviour
             if ( heroNumber == 0)
             {
                 SceneManager.LoadScene(3);
+            }
+            int enemyNumber = GameObject.FindGameObjectsWithTag("Enemy").Length;
+            if (enemyNumber == 0)
+            {
+                SceneManager.LoadScene(4);
             }
         }
     }
@@ -115,12 +126,17 @@ public class GameController : MonoBehaviour
     public void InitializeComponents_Scene_Game_Over()
     {
         buttonTryAgain = GameObject.Find("Button_Restart").GetComponent<Button>();
-        buttonTryAgain.onClick.AddListener(() => { onButtonRestartClicked(); });
+        buttonTryAgain.onClick.AddListener(() => { onButtonNextLevelClicked(); });
+    }
+    public void InitializeComponents_Scene_Level_Cleared()
+    {
+        buttonLevelCleared = GameObject.Find("Button_Next_Level").GetComponent<Button>();
+        buttonLevelCleared.onClick.AddListener(() => { onButtonNextLevelClicked(); });
     }
 
-    private void onButtonRestartClicked()
+    private void onButtonNextLevelClicked()
     {
-        SceneManager.LoadScene(level);
+        SceneManager.LoadScene(level + 1);
     }
 
     private void onButtonSilverKnightClicked()
