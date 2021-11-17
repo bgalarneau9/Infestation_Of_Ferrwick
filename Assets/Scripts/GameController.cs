@@ -8,6 +8,7 @@ using UnityEngine.UI;
 public class GameController : MonoBehaviour
 {
     public static GameController Instance { get; private set; }
+    private int level = 0;
     //Main Menu
     private Button buttonPlayGame;
     private Button buttonPlayerSelect;
@@ -119,7 +120,7 @@ public class GameController : MonoBehaviour
 
     private void onButtonRestartClicked()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(level);
     }
 
     private void onButtonSilverKnightClicked()
@@ -139,7 +140,7 @@ public class GameController : MonoBehaviour
 
     private void onPlayGameClicked()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(level);
     }
     private void onPlayerSelectClicked()
     {
