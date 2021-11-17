@@ -17,6 +17,8 @@ public class GameController : MonoBehaviour
     private Button buttonDarkKnight;
     private Button buttonSilverKnight;
     private Button buttonBackPlayerSelect;
+    //Game Over
+    private Button buttonTryAgain;
     //Deal with player selection
     [SerializeField]
     private GameObject darkKnight;
@@ -53,12 +55,23 @@ public class GameController : MonoBehaviour
         {
             InitializeComponents_Scene_Player_Select();
         }
+        else if (SceneManager.GetActiveScene().buildIndex == 3)
+        {
+            InitializeComponents_Scene_Game_Over();
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        if (SceneManager.GetActiveScene().buildIndex == 0 )
+        {
+            int heroNumber= GameObject.FindGameObjectsWithTag("Player").Length;
+            if ( heroNumber == 0)
+            {
+                SceneManager.LoadScene(3);
+            }
+        }
     }
 
     private void InitializeComponents_Scene_Main_Menu()
@@ -97,6 +110,16 @@ public class GameController : MonoBehaviour
         buttonSilverKnight.onClick.AddListener(() => { onButtonSilverKnightClicked(); });
         buttonBackPlayerSelect = GameObject.Find("Button_Back").GetComponent<Button>();
         buttonBackPlayerSelect.onClick.AddListener(() => { onButtonBackClicked(); });
+    }
+    public void InitializeComponents_Scene_Game_Over()
+    {
+        buttonTryAgain = GameObject.Find("Button_Restart").GetComponent<Button>();
+        buttonTryAgain.onClick.AddListener(() => { onButtonRestartClicked(); });
+    }
+
+    private void onButtonRestartClicked()
+    {
+        SceneManager.LoadScene(0);
     }
 
     private void onButtonSilverKnightClicked()
