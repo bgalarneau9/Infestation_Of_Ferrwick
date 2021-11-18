@@ -20,7 +20,7 @@ public class GameController : MonoBehaviour
     private Button buttonBackPlayerSelect;
     private Button buttonDifficultyHard;
     private Button buttonDifficultyEasy;
-    private bool isHard;
+    public bool isHard;
     //Game Over
     private Button buttonTryAgain;
     //Level Cleared

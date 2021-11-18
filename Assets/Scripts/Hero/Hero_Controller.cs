@@ -6,6 +6,8 @@ public class Hero_Controller : MonoBehaviour
 {
     public int health = 100;
     private Text healthText;
+    private bool isHard;
+    private int enemyDamage;
     [SerializeField]
     private int heroType;
     public Rigidbody2D rb;
@@ -34,6 +36,14 @@ public class Hero_Controller : MonoBehaviour
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         isAlive = true;
         healthText = GameObject.Find("Health_Text").GetComponent<Text>();
+        isHard = GameObject.Find("EventSystem").GetComponent<GameController>().isHard;
+        if (isHard == false)
+        {
+            enemyDamage = 15;
+        } else
+        {
+            enemyDamage = 25;
+        }
     }
     // Update is called once per frame
     void Update()
@@ -81,7 +91,7 @@ public class Hero_Controller : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy_Projectile")
         {
-            health -= 25;
+            health -= enemyDamage;
             if (health <= 0)
             {
                 GameObject bloodSplatter = Instantiate(_bloodSplatPrefab, _bloodSplatSpawn.position, Quaternion.identity);
