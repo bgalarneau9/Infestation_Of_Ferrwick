@@ -12,6 +12,7 @@ public class GameController : MonoBehaviour
     //Main Menu
     private Button buttonPlayGame;
     private Button buttonPlayerSelect;
+    private Button buttonQuitGame;
     //Sample Scene
     private Button buttonBack;
     //Player Select
@@ -95,6 +96,8 @@ public class GameController : MonoBehaviour
         buttonPlayGame.onClick.AddListener(() => { onPlayGameClicked(); });
         buttonPlayerSelect = GameObject.Find("Button_Player_Select").GetComponent<Button>();
         buttonPlayerSelect.onClick.AddListener(() => { onPlayerSelectClicked(); });
+        buttonQuitGame = GameObject.Find("Button_Quit_Game").GetComponent<Button>();
+        buttonQuitGame.onClick.AddListener(() => { onButtonQuitGame(); });
     }
 
     public void InitializeComponents_Scene_Sample()
@@ -180,5 +183,13 @@ public class GameController : MonoBehaviour
     private void onPlayerSelectClicked()
     {
         SceneManager.LoadScene(2);
+    }
+    private void onButtonQuitGame()
+    {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
     }
 }
