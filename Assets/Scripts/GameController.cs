@@ -18,6 +18,9 @@ public class GameController : MonoBehaviour
     private Button buttonDarkKnight;
     private Button buttonSilverKnight;
     private Button buttonBackPlayerSelect;
+    private Button buttonDifficultyHard;
+    private Button buttonDifficultyEasy;
+    private bool isHard;
     //Game Over
     private Button buttonTryAgain;
     //Level Cleared
@@ -122,7 +125,23 @@ public class GameController : MonoBehaviour
         buttonSilverKnight.onClick.AddListener(() => { onButtonSilverKnightClicked(); });
         buttonBackPlayerSelect = GameObject.Find("Button_Back").GetComponent<Button>();
         buttonBackPlayerSelect.onClick.AddListener(() => { onButtonBackClicked(); });
+        buttonDifficultyEasy = GameObject.Find("Button_Easy_Difficulty").GetComponent<Button>();
+        buttonDifficultyEasy.onClick.AddListener(() => { onButtonDifficultyEasyClicked(); });
+        buttonDifficultyHard = GameObject.Find("Button_Hard_Difficulty").GetComponent<Button>();
+        buttonDifficultyHard.onClick.AddListener(() => { onButtonDifficultyHardClicked(); });
+
     }
+
+    private void onButtonDifficultyHardClicked()
+    {
+        isHard = true;
+    }
+
+    private void onButtonDifficultyEasyClicked()
+    {
+        isHard = false;
+    }
+
     public void InitializeComponents_Scene_Game_Over()
     {
         buttonTryAgain = GameObject.Find("Button_Restart").GetComponent<Button>();
