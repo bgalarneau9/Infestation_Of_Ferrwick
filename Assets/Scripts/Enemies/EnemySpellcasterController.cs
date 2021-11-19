@@ -4,7 +4,11 @@ using UnityEngine;
 
 public class EnemySpellcasterController : MonoBehaviour
 {
+    //Attacking player
     private GameObject player;
+    private float distBetween;
+    private float allowableAttackDist;
+    //Other
     private int health = 100;
     [SerializeField]
     private SpriteRenderer sr;
@@ -35,7 +39,7 @@ public class EnemySpellcasterController : MonoBehaviour
     }
     private void Update()
     {
-
+        distBetween = Vector3.Distance(player.transform.position, spellCasterPrefab.transform.position);
         if (isAlive == false && enemyAudioSource.isPlaying == false)
         {
             Destroy(spellCasterPrefab);
@@ -44,11 +48,15 @@ public class EnemySpellcasterController : MonoBehaviour
 
     private void attack()
     {
-        anim.Play("Enemy_Spellcaster_Attack");
-        var projectile = Instantiate(EnemyProjectilePrefab, EnemyProjectileSpawnPoint.position, Quaternion.identity) as GameObject;
-        var projectileRigidBody = projectile.GetComponent<Rigidbody2D>();
-        projectileRigidBody.velocity = Quaternion.Euler(0, 0, 0) * Vector3.left * 15; //10 == power
-        Destroy(projectile, 0.20f);
+        Debug.Log(distBetween);
+        if (distBetween < allowableAttackDist)
+        {
+            anim.Play("Enemy_Spellcaster_Attack");
+            var projectile = Instantiate(EnemyProjectilePrefab, EnemyProjectileSpawnPoint.position, Quaternion.identity) as GameObject;
+            var projectileRigidBody = projectile.GetComponent<Rigidbody2D>();
+            projectileRigidBody.velocity = Quaternion.Euler(0, 0, 0) * Vector3.left * 15; //10 == power
+            Destroy(projectile, 0.20f);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
