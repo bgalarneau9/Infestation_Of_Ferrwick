@@ -35,14 +35,7 @@ public class EnemySpellcasterController : MonoBehaviour
     }
     private void Update()
     {
-        Timer += 1;
-        //Dead spellcasters can't attack
-        if (Timer > 800 && isAlive == true)
-        {
-            attack();
-            Timer = 0;
 
-        }
         if (isAlive == false && enemyAudioSource.isPlaying == false)
         {
             Destroy(spellCasterPrefab);
