@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemySpellcasterController : MonoBehaviour
 {
+    private GameObject player;
     private int health = 100;
     [SerializeField]
     private SpriteRenderer sr;
@@ -30,6 +31,7 @@ public class EnemySpellcasterController : MonoBehaviour
     void Start()
     {
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        player = GameObject.FindGameObjectWithTag("Player");
     }
     private void Update()
     {
