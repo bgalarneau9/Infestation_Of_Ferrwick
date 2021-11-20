@@ -52,7 +52,11 @@ public class EnemyController : MonoBehaviour
     }
     private void Update()
     {
-        distBetween = Vector3.Distance(player.transform.position, enemyPrefab.transform.position);
+        int numberOfPlayer = GameObject.FindGameObjectsWithTag("Player").Length;
+        if (numberOfPlayer > 0)
+        {
+            distBetween = Vector3.Distance(player.transform.position, enemyPrefab.transform.position);
+        }
         if (isAlive == false && enemyAudioSource.isPlaying == false)
         {
             Destroy(enemyPrefab);
