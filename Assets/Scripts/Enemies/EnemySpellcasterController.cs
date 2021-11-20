@@ -46,7 +46,7 @@ public class EnemySpellcasterController : MonoBehaviour
         playerPosition = player.transform.position;
         timeBetweenAttack = 3;
         allowableAttackDist = 4;
-        allowableFollowDistance = 6;
+        allowableFollowDistance = 5;
         moveSpeed = 2;
     }
     private void Update()
