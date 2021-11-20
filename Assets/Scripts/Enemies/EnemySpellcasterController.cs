@@ -36,27 +36,29 @@ public class EnemySpellcasterController : MonoBehaviour
     {
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
         player = GameObject.FindGameObjectWithTag("Player");
+        allowableAttackDist = 4;
     }
     private void Update()
     {
         distBetween = Vector3.Distance(player.transform.position, spellCasterPrefab.transform.position);
+        Debug.Log(distBetween);
         if (isAlive == false && enemyAudioSource.isPlaying == false)
         {
             Destroy(spellCasterPrefab);
         }
-    }
-
-    private void attack()
-    {
-        Debug.Log(distBetween);
         if (distBetween < allowableAttackDist)
         {
+            tryAttack();
+        }
+    }
+
+    private void tryAttack()
+    {
             anim.Play("Enemy_Spellcaster_Attack");
             var projectile = Instantiate(EnemyProjectilePrefab, EnemyProjectileSpawnPoint.position, Quaternion.identity) as GameObject;
             var projectileRigidBody = projectile.GetComponent<Rigidbody2D>();
             projectileRigidBody.velocity = Quaternion.Euler(0, 0, 0) * Vector3.left * 15; //10 == power
             Destroy(projectile, 0.20f);
-        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
