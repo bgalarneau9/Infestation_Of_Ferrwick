@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemySpellcasterController : MonoBehaviour
+public class EnemyController : MonoBehaviour
 {
     //Attacking player
     private GameObject player;
@@ -25,7 +25,7 @@ public class EnemySpellcasterController : MonoBehaviour
     [SerializeField]
     private BoxCollider2D bc;
     [SerializeField]
-    private GameObject spellCasterPrefab;
+    private GameObject enemyPrefab;
     [SerializeField]
     private Transform _bloodSplatSpawn;
     [SerializeField]
@@ -52,10 +52,10 @@ public class EnemySpellcasterController : MonoBehaviour
     }
     private void Update()
     {
-        distBetween = Vector3.Distance(player.transform.position, spellCasterPrefab.transform.position);
+        distBetween = Vector3.Distance(player.transform.position, enemyPrefab.transform.position);
         if (isAlive == false && enemyAudioSource.isPlaying == false)
         {
-            Destroy(spellCasterPrefab);
+            Destroy(enemyPrefab);
         }
         if (distBetween < allowableAttackDist)
         {
