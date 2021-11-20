@@ -6,6 +6,7 @@ public class EnemySpellcasterController : MonoBehaviour
 {
     //Attacking player
     private GameObject player;
+    private Vector3 playerPosition;
     private float distBetween;
     private float allowableAttackDist;
     private float timeBetweenAttack;
@@ -37,6 +38,7 @@ public class EnemySpellcasterController : MonoBehaviour
     {
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
         player = GameObject.FindGameObjectWithTag("Player");
+        playerPosition = player.transform.position;
         timeBetweenAttack = 3;
         allowableAttackDist = 4;
     }
