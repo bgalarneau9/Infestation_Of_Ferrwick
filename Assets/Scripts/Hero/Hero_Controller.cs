@@ -6,7 +6,9 @@ public class Hero_Controller : MonoBehaviour
 {
     public int health = 100;
     private Text healthText;
+    private Text deathText;
     private bool isHard;
+    private string playerName;
     private int enemyDamage;
     [SerializeField]
     private int heroType;
@@ -36,7 +38,9 @@ public class Hero_Controller : MonoBehaviour
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         isAlive = true;
         healthText = GameObject.Find("Health_Text").GetComponent<Text>();
+        deathText = GameObject.Find("Death_Text").GetComponent<Text>();
         isHard = GameObject.Find("EventSystem").GetComponent<GameController>().isHard;
+        playerName = GameObject.Find("EventSystem").GetComponent<GameController>().playerName;
         if (isHard == false)
         {
             enemyDamage = 15;
@@ -116,6 +120,10 @@ public class Hero_Controller : MonoBehaviour
             heroAudioSource.Play();
             sr.forceRenderingOff = true;
             isAlive = false;
+        }
+        if(health<=0)
+        {
+            deathText.text = playerName + " Died!";
         }
     }
 }

@@ -9,10 +9,12 @@ public class GameController : MonoBehaviour
 {
     public static GameController Instance { get; private set; }
     private int level = 0;
+    public string playerName;
     //Main Menu
     private Button buttonPlayGame;
     private Button buttonPlayerSelect;
     private Button buttonQuitGame;
+    private Button buttonTutorial;
     //Sample Scene
     private Button buttonBack;
     //Player Select
@@ -21,6 +23,7 @@ public class GameController : MonoBehaviour
     private Button buttonBackPlayerSelect;
     private Button buttonDifficultyHard;
     private Button buttonDifficultyEasy;
+    private InputField inputName;
     public bool isHard;
     //Game Over
     private Button buttonTryAgain;
@@ -70,6 +73,10 @@ public class GameController : MonoBehaviour
         {
             InitializeComponents_Scene_Level_Cleared();
         }
+        else if (SceneManager.GetActiveScene().buildIndex == 5)
+        {
+            InitializeComponents_Scene_Tutorial();
+        }
     }
 
     // Update is called once per frame
@@ -98,6 +105,8 @@ public class GameController : MonoBehaviour
         buttonPlayerSelect.onClick.AddListener(() => { onPlayerSelectClicked(); });
         buttonQuitGame = GameObject.Find("Button_Quit_Game").GetComponent<Button>();
         buttonQuitGame.onClick.AddListener(() => { onButtonQuitGame(); });
+        buttonTutorial = GameObject.Find("Button_Tutorial").GetComponent<Button>();
+        buttonTutorial.onClick.AddListener(() => { onButtonTutorial(); });
     }
 
     public void InitializeComponents_Scene_Sample()
@@ -132,7 +141,25 @@ public class GameController : MonoBehaviour
         buttonDifficultyEasy.onClick.AddListener(() => { onButtonDifficultyEasyClicked(); });
         buttonDifficultyHard = GameObject.Find("Button_Hard_Difficulty").GetComponent<Button>();
         buttonDifficultyHard.onClick.AddListener(() => { onButtonDifficultyHardClicked(); });
+        inputName = GameObject.Find("InputField_Name").GetComponent<InputField>();
+        inputName.onEndEdit.AddListener(delegate { onEndEditName(); });
+    }
 
+    private void onEndEditName()
+    {
+        playerName = inputName.text.ToString();
+        if (playerName.Length > 10)
+        {
+            playerName = "Hero";
+            inputName.text = "Name too long!";
+        }
+        Debug.Log("Player Name: " + playerName.ToString());
+    }
+
+    private void InitializeComponents_Scene_Tutorial()
+    {
+        buttonBack = GameObject.Find("Button_Back").GetComponent<Button>();
+        buttonBack.onClick.AddListener(() => { onButtonBackClicked(); });
     }
 
     private void onButtonDifficultyHardClicked()
@@ -155,7 +182,10 @@ public class GameController : MonoBehaviour
         buttonLevelCleared = GameObject.Find("Button_Next_Level").GetComponent<Button>();
         buttonLevelCleared.onClick.AddListener(() => { onButtonNextLevelClicked(); });
     }
-
+    private void onButtonTutorial()
+    {
+        SceneManager.LoadScene(5);
+    }
     private void onButtonNextLevelClicked()
     {
         SceneManager.LoadScene(level + 1);
