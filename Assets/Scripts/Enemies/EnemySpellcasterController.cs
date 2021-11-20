@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,6 +12,10 @@ public class EnemySpellcasterController : MonoBehaviour
     private float allowableAttackDist;
     private float timeBetweenAttack;
     private float nextAttack;
+    //Moving towards player
+    private int allowableFollowDistance;
+    public Vector2 moveBy;
+    public float moveSpeed;
     //Other
     private int health = 100;
     [SerializeField]
@@ -36,11 +41,13 @@ public class EnemySpellcasterController : MonoBehaviour
 
     void Start()
     {
-        rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        //rb.constraints = RigidbodyConstraints2D.FreezeAll;
         player = GameObject.FindGameObjectWithTag("Player");
         playerPosition = player.transform.position;
         timeBetweenAttack = 3;
         allowableAttackDist = 4;
+        allowableFollowDistance = 6;
+        moveSpeed = 2;
     }
     private void Update()
     {
@@ -51,7 +58,22 @@ public class EnemySpellcasterController : MonoBehaviour
         }
         if (distBetween < allowableAttackDist)
         {
-            tryAttack();
+            //tryAttack();
+        }
+    }
+    private void FixedUpdate()
+    {
+        moveBy = new Vector2(player.transform.position.x, playerPosition.y);
+        Debug.Log(moveBy);
+        if(distBetween < allowableFollowDistance)
+        {
+            if(moveBy.x < 0)
+            {
+                rb.position += moveBy * moveSpeed * Time.fixedDeltaTime;
+            } else
+            {
+                rb.position -= moveBy * moveSpeed * Time.fixedDeltaTime;
+            }
         }
     }
 
