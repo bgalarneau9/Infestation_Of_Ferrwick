@@ -42,6 +42,7 @@ public class EnemySpellcasterController : MonoBehaviour
     void Start()
     {
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+        rb.constraints = RigidbodyConstraints2D.FreezePositionY;
         player = GameObject.FindGameObjectWithTag("Player");
         playerPosition = player.transform.position;
         timeBetweenAttack = 3;
@@ -58,7 +59,7 @@ public class EnemySpellcasterController : MonoBehaviour
         }
         if (distBetween < allowableAttackDist)
         {
-            //tryAttack();
+            tryAttack();
         }
     }
     private void FixedUpdate()
@@ -67,7 +68,13 @@ public class EnemySpellcasterController : MonoBehaviour
         moveBy.y = 0;
         if(distBetween < allowableFollowDistance)
         {
-            rb.position += moveBy * moveSpeed * Time.fixedDeltaTime;
+            if (moveBy.x < 0)
+            {
+                rb.position += moveBy * moveSpeed * Time.fixedDeltaTime;
+            } else
+            {
+                rb.position -= moveBy * moveSpeed * Time.fixedDeltaTime;
+            }
         }
     }
 
