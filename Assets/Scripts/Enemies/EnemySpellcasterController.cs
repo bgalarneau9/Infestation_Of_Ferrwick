@@ -37,7 +37,7 @@ public class EnemySpellcasterController : MonoBehaviour
     {
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
         player = GameObject.FindGameObjectWithTag("Player");
-        timeBetweenAttack = 2;
+        timeBetweenAttack = 3;
         allowableAttackDist = 4;
     }
     private void Update()
@@ -55,14 +55,14 @@ public class EnemySpellcasterController : MonoBehaviour
 
     private void tryAttack()
     {
-        if (Time.fixedDeltaTime >= nextAttack)
+        if (Time.time >= nextAttack)
         {
             anim.Play("Enemy_Spellcaster_Attack");
             var projectile = Instantiate(EnemyProjectilePrefab, EnemyProjectileSpawnPoint.position, Quaternion.identity) as GameObject;
             var projectileRigidBody = projectile.GetComponent<Rigidbody2D>();
             projectileRigidBody.velocity = Quaternion.Euler(0, 0, 0) * Vector3.left * 15; //10 == power
             Destroy(projectile, 0.20f);
-            nextAttack = Time.fixedDeltaTime + timeBetweenAttack;
+            nextAttack = Time.time + timeBetweenAttack;
         }
     }
 
