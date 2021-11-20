@@ -56,7 +56,6 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        menuAudioSource.Play();
         if (SceneManager.GetActiveScene().buildIndex == 1)
         {
             InitializeComponents_Scene_Main_Menu();
@@ -103,6 +102,10 @@ public class GameController : MonoBehaviour
 
     private void InitializeComponents_Scene_Main_Menu()
     {
+        if( menuAudioSource.isPlaying == false)
+        {
+            menuAudioSource.Play();
+        }
         buttonPlayGame = GameObject.Find("Button_Play_Game").GetComponent<Button>();
         buttonPlayGame.onClick.AddListener(() => { onPlayGameClicked(); });
         buttonPlayerSelect = GameObject.Find("Button_Player_Select").GetComponent<Button>();
