@@ -71,6 +71,10 @@ public class GameController : MonoBehaviour
         {
             InitializeComponents_Scene_Level_Cleared();
         }
+        else if (SceneManager.GetActiveScene().buildIndex == 5)
+        {
+            InitializeComponents_Scene_Tutorial();
+        }
     }
 
     // Update is called once per frame
@@ -135,7 +139,11 @@ public class GameController : MonoBehaviour
         buttonDifficultyEasy.onClick.AddListener(() => { onButtonDifficultyEasyClicked(); });
         buttonDifficultyHard = GameObject.Find("Button_Hard_Difficulty").GetComponent<Button>();
         buttonDifficultyHard.onClick.AddListener(() => { onButtonDifficultyHardClicked(); });
-
+    }
+    private void InitializeComponents_Scene_Tutorial()
+    {
+        buttonBack = GameObject.Find("Button_Back").GetComponent<Button>();
+        buttonBack.onClick.AddListener(() => { onButtonBackClicked(); });
     }
 
     private void onButtonDifficultyHardClicked()
@@ -160,7 +168,7 @@ public class GameController : MonoBehaviour
     }
     private void onButtonTutorial()
     {
-        throw new NotImplementedException();
+        SceneManager.LoadScene(5);
     }
     private void onButtonNextLevelClicked()
     {
