@@ -101,6 +101,9 @@ public class Hero_Controller : MonoBehaviour
     {
         if (collision.gameObject.tag == "Enemy_Projectile")
         {
+            GameObject enemyProjectile = GameObject.FindGameObjectWithTag("Enemy_Projectile");
+            //Set the player's velocity in the x direction to the inverse of the projectile speed so it stays in same spot
+            rb.velocity = new Vector2(-enemyProjectile.GetComponent<Rigidbody2D>().velocity.x, 0);
             health -= enemyDamage;
             if (health <= 0)
             {

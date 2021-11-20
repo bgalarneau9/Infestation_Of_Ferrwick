@@ -84,6 +84,7 @@ public class EnemyController : MonoBehaviour
 
     private void tryAttack()
     {
+        GameObject hero = GameObject.FindGameObjectWithTag("Player");
         if (Time.time >= nextAttack)
         {
             anim.Play("Enemy_Spellcaster_Attack");
@@ -99,6 +100,9 @@ public class EnemyController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Projectile")
         {
+            GameObject heroProjectile = GameObject.FindGameObjectWithTag("Projectile");
+            //Set the enemies velocity in the x direction to the inverse of the projectile speed so it stay in same spot
+            rb.velocity = new Vector2(-heroProjectile.GetComponent<Rigidbody2D>().velocity.x, 0);
             health -= 25;
             if ( health <= 0 && isAlive == true)
             {
