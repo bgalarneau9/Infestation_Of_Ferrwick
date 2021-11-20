@@ -7,6 +7,8 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
+    [SerializeField]
+    private AudioSource menuAudioSource;
     public static GameController Instance { get; private set; }
     private int level = 0;
     public string playerName;
@@ -42,6 +44,7 @@ public class GameController : MonoBehaviour
         {
             Instance = this;
             DontDestroyOnLoad(this);
+            DontDestroyOnLoad(menuAudioSource);
             Instance.Start(); //Update instance for whatever scene we begin on (main menu for this project)
         }
         else
@@ -53,6 +56,7 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        menuAudioSource.Play();
         if (SceneManager.GetActiveScene().buildIndex == 1)
         {
             InitializeComponents_Scene_Main_Menu();
