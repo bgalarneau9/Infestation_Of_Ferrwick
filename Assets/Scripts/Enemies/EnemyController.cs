@@ -103,9 +103,9 @@ public class EnemyController : MonoBehaviour
                 enemyAudioSource.clip = deathsound;
                 enemyAudioSource.PlayOneShot(deathsound);
                 bc.enabled = false;
-                //Make spellcaster invisible while death audio plays
+                //Make enemy invisible while death audio plays
                 sr.forceRenderingOff = true;
-                //Make sure spellcaster can't throw out an attack when he is dead
+                //Make sure enemy can't throw out an attack when he is dead
                 isAlive = false;
             }
         }
