@@ -13,6 +13,10 @@ public class GameController : MonoBehaviour
     private int level = 0;
     public string playerName;
     //Main Menu
+    [SerializeField]
+    private AudioClip menuClip;
+    [SerializeField]
+    private AudioClip gameOverClip;
     private Button buttonPlayGame;
     private Button buttonPlayerSelect;
     private Button buttonQuitGame;
@@ -102,6 +106,7 @@ public class GameController : MonoBehaviour
 
     private void InitializeComponents_Scene_Main_Menu()
     {
+        menuAudioSource.clip = menuClip;
         if ( menuAudioSource.isPlaying == false)
         {
             menuAudioSource.Play();
@@ -118,6 +123,11 @@ public class GameController : MonoBehaviour
 
     public void InitializeComponents_Scene_Sample()
     {
+        if (menuAudioSource.isPlaying == true)
+        {
+            menuAudioSource.Stop();
+            menuAudioSource.Play();
+        }
         buttonBack = GameObject.Find("Button_Back").GetComponent<Button>();
         buttonBack.onClick.AddListener(() => { onButtonBackClicked(); });
         int NumberOfPlayers = GameObject.FindGameObjectsWithTag("Player").Length;
@@ -181,6 +191,12 @@ public class GameController : MonoBehaviour
 
     public void InitializeComponents_Scene_Game_Over()
     {
+        if(menuAudioSource.isPlaying == true)
+        {
+            menuAudioSource.Stop();
+            menuAudioSource.clip = gameOverClip;
+            menuAudioSource.Play();
+        }
         buttonTryAgain = GameObject.Find("Button_Restart").GetComponent<Button>();
         buttonTryAgain.onClick.AddListener(() => { onButtonNextLevelClicked(); });
     }
