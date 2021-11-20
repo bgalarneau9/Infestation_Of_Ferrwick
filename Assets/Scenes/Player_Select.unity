@@ -1702,6 +1702,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 898150b098ede594da5302e6b96ec263, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerName: 
   isHard: 0
   darkKnight: {fileID: 7118067203466299472, guid: d43528eec1fda2c4ca669f21dc984bba, type: 3}
   silverKnight: {fileID: 614806875538037759, guid: 1ffa0b2c314cddb4e82c72e123fff94e, type: 3}
