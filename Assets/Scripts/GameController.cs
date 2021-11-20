@@ -9,6 +9,7 @@ public class GameController : MonoBehaviour
 {
     public static GameController Instance { get; private set; }
     private int level = 0;
+    public string playerName;
     //Main Menu
     private Button buttonPlayGame;
     private Button buttonPlayerSelect;
@@ -22,6 +23,7 @@ public class GameController : MonoBehaviour
     private Button buttonBackPlayerSelect;
     private Button buttonDifficultyHard;
     private Button buttonDifficultyEasy;
+    private InputField inputName;
     public bool isHard;
     //Game Over
     private Button buttonTryAgain;
@@ -139,7 +141,21 @@ public class GameController : MonoBehaviour
         buttonDifficultyEasy.onClick.AddListener(() => { onButtonDifficultyEasyClicked(); });
         buttonDifficultyHard = GameObject.Find("Button_Hard_Difficulty").GetComponent<Button>();
         buttonDifficultyHard.onClick.AddListener(() => { onButtonDifficultyHardClicked(); });
+        inputName = GameObject.Find("InputField_Name").GetComponent<InputField>();
+        inputName.onEndEdit.AddListener(delegate { onEndEditName(); });
     }
+
+    private void onEndEditName()
+    {
+        playerName = inputName.text.ToString();
+        if (playerName.Length > 10)
+        {
+            playerName = "Hero";
+            inputName.text = "Name too long!";
+        }
+        Debug.Log("Player Name: " + playerName.ToString());
+    }
+
     private void InitializeComponents_Scene_Tutorial()
     {
         buttonBack = GameObject.Find("Button_Back").GetComponent<Button>();
