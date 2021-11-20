@@ -351,7 +351,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 7c514f19711b86b4cb5793b796156bba, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
@@ -530,7 +530,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menuAudioSource: {fileID: 358822832}
-  menuMusic: {fileID: 0}
   playerName: 
   isHard: 0
   darkKnight: {fileID: 7118067203466299472, guid: d43528eec1fda2c4ca669f21dc984bba, type: 3}

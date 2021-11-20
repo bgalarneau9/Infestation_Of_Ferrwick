@@ -102,7 +102,7 @@ public class GameController : MonoBehaviour
 
     private void InitializeComponents_Scene_Main_Menu()
     {
-        if( menuAudioSource.isPlaying == false)
+        if ( menuAudioSource.isPlaying == false)
         {
             menuAudioSource.Play();
         }
