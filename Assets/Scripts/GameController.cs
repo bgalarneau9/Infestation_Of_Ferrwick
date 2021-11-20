@@ -13,6 +13,7 @@ public class GameController : MonoBehaviour
     private Button buttonPlayGame;
     private Button buttonPlayerSelect;
     private Button buttonQuitGame;
+    private Button buttonTutorial;
     //Sample Scene
     private Button buttonBack;
     //Player Select
@@ -98,6 +99,8 @@ public class GameController : MonoBehaviour
         buttonPlayerSelect.onClick.AddListener(() => { onPlayerSelectClicked(); });
         buttonQuitGame = GameObject.Find("Button_Quit_Game").GetComponent<Button>();
         buttonQuitGame.onClick.AddListener(() => { onButtonQuitGame(); });
+        buttonTutorial = GameObject.Find("Button_Tutorial").GetComponent<Button>();
+        buttonTutorial.onClick.AddListener(() => { onButtonTutorial(); });
     }
 
     public void InitializeComponents_Scene_Sample()
@@ -155,7 +158,10 @@ public class GameController : MonoBehaviour
         buttonLevelCleared = GameObject.Find("Button_Next_Level").GetComponent<Button>();
         buttonLevelCleared.onClick.AddListener(() => { onButtonNextLevelClicked(); });
     }
-
+    private void onButtonTutorial()
+    {
+        throw new NotImplementedException();
+    }
     private void onButtonNextLevelClicked()
     {
         SceneManager.LoadScene(level + 1);
