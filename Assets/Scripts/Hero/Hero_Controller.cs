@@ -54,7 +54,13 @@ public class Hero_Controller : MonoBehaviour
         anim.SetFloat("Horizontal", moveBy.x);
         anim.SetFloat("Vertical", moveBy.y);
         anim.SetFloat("speed", moveBy.sqrMagnitude);
-        healthText.text = health.ToString();
+        if (health > 0)
+        {
+            healthText.text = health.ToString();
+        } else
+        {
+            healthText.text = "0";
+        }
         if (isAlive == false && heroAudioSource.isPlaying == false)
         {
             Destroy(heroPrefab);
