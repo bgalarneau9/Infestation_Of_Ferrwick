@@ -20,7 +20,7 @@ public class ProjectileController : MonoBehaviour
     {
         if (collision.gameObject.tag == "FlipMovement")
         {
-            Physics2D.IgnoreCollision(collision.gameObject.GetComponent<BoxCollider2D>(), heroPrefab.GetComponent<BoxCollider2D>());
+            Physics2D.IgnoreCollision(collision.gameObject.GetComponent<BoxCollider2D>(), projectile.GetComponent<BoxCollider2D>());
         }
         Destroy(projectile);
     }
