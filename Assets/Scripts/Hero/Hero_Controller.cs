@@ -31,6 +31,8 @@ public class Hero_Controller : MonoBehaviour
     private AudioSource heroAudioSource;
     [SerializeField]
     private SpriteRenderer sr;
+    private float injuryFlash;
+    private float timeBetweenFlash;
 
 
     private void Start()
@@ -41,7 +43,8 @@ public class Hero_Controller : MonoBehaviour
         deathText = GameObject.Find("Death_Text").GetComponent<Text>();
         isHard = GameObject.Find("EventSystem").GetComponent<GameController>().isHard;
         playerName = GameObject.Find("EventSystem").GetComponent<GameController>().playerName;
-        
+        timeBetweenFlash = 0.15f;
+
         if (isHard == false)
         {
             enemyDamage = 15;
@@ -69,6 +72,10 @@ public class Hero_Controller : MonoBehaviour
         if (isAlive == false && heroAudioSource.isPlaying == false)
         {
             Destroy(heroPrefab);
+        }
+        if(Time.time >= injuryFlash)
+        {
+            sr.color = new Color(1, 1, 1);
         }
     }
     private void FixedUpdate()
@@ -108,6 +115,7 @@ public class Hero_Controller : MonoBehaviour
         }
         else if (collision.gameObject.tag == "Enemy_Projectile")
         {
+            sr.color = new Color(1, 0, 0);
             GameObject enemyProjectile = GameObject.FindGameObjectWithTag("Enemy_Projectile");
             //Set the player's velocity in the x direction to the inverse of the projectile speed so it stays in same spot
             rb.velocity = new Vector2(-enemyProjectile.GetComponent<Rigidbody2D>().velocity.x, 0);
@@ -121,9 +129,11 @@ public class Hero_Controller : MonoBehaviour
                 sr.forceRenderingOff = true;
                 isAlive = false;
             }
+            injuryFlash = Time.time + timeBetweenFlash;
         }
         else if(collision.gameObject.tag == "Enemy")
         {
+            sr.color = new Color(1, 0, 0);
             health -= enemyDamage;
             if (health <= 0)
             {
@@ -134,6 +144,7 @@ public class Hero_Controller : MonoBehaviour
                 sr.forceRenderingOff = true;
                 isAlive = false;
             }
+            injuryFlash = Time.time + timeBetweenFlash;
         }
         else if (collision.gameObject.tag == "Kill_Zone") {
             health = 0;
