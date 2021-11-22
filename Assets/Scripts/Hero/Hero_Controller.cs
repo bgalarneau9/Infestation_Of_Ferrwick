@@ -103,7 +103,7 @@ public class Hero_Controller : MonoBehaviour
         if (collision.gameObject.tag == "FlipMovement") {
             Physics2D.IgnoreCollision(collision.gameObject.GetComponent<BoxCollider2D>(), heroPrefab.GetComponent<BoxCollider2D>());
         }
-        if (collision.gameObject.tag == "Enemy_Projectile")
+        else if (collision.gameObject.tag == "Enemy_Projectile")
         {
             GameObject enemyProjectile = GameObject.FindGameObjectWithTag("Enemy_Projectile");
             //Set the player's velocity in the x direction to the inverse of the projectile speed so it stays in same spot

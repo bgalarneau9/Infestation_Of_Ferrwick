@@ -44,7 +44,6 @@ public class EnemyController : MonoBehaviour
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         rb.constraints = RigidbodyConstraints2D.FreezePositionY;
         player = GameObject.FindGameObjectWithTag("Player");
-        Physics2D.IgnoreCollision(GameObject.FindGameObjectWithTag("FlipMovement").GetComponent<BoxCollider2D>(), enemyPrefab.GetComponent<BoxCollider2D>());
         playerPosition = player.transform.position;
         timeBetweenAttack = 3;
         allowableAttackDist = 4;
@@ -99,7 +98,11 @@ public class EnemyController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Projectile")
+        if (collision.gameObject.tag == "FlipMovement")
+        {
+            Physics2D.IgnoreCollision(collision.gameObject.GetComponent<BoxCollider2D>(), enemyPrefab.GetComponent<BoxCollider2D>());
+        }
+        else if (collision.gameObject.tag == "Projectile")
         {
             GameObject heroProjectile = GameObject.FindGameObjectWithTag("Projectile");
             //Set the enemies velocity in the x direction to the inverse of the projectile speed so it stay in same spot
