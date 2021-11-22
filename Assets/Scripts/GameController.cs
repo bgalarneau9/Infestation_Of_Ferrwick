@@ -97,7 +97,7 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (SceneManager.GetActiveScene().buildIndex == 0 )
+        if (SceneManager.GetActiveScene().buildIndex == 0 || SceneManager.GetActiveScene().buildIndex == 6)
         {
             int heroNumber= GameObject.FindGameObjectsWithTag("Player").Length;
             if ( heroNumber == 0)
