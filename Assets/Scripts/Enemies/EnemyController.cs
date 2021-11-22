@@ -44,6 +44,7 @@ public class EnemyController : MonoBehaviour
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         rb.constraints = RigidbodyConstraints2D.FreezePositionY;
         player = GameObject.FindGameObjectWithTag("Player");
+        Physics2D.IgnoreCollision(GameObject.FindGameObjectWithTag("FlipMovement").GetComponent<BoxCollider2D>(), enemyPrefab.GetComponent<BoxCollider2D>());
         playerPosition = player.transform.position;
         timeBetweenAttack = 3;
         allowableAttackDist = 4;
