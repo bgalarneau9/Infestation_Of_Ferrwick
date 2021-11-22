@@ -41,6 +41,7 @@ public class Hero_Controller : MonoBehaviour
         deathText = GameObject.Find("Death_Text").GetComponent<Text>();
         isHard = GameObject.Find("EventSystem").GetComponent<GameController>().isHard;
         playerName = GameObject.Find("EventSystem").GetComponent<GameController>().playerName;
+        
         if (isHard == false)
         {
             enemyDamage = 15;
@@ -88,22 +89,41 @@ public class Hero_Controller : MonoBehaviour
     }
     public void attack()
     {
-        int NumberOfPojectiles = GameObject.FindGameObjectsWithTag("Projectile").Length;
-        if( NumberOfPojectiles < 2 )
+        if( isAlive )
         {
-            var heroProjectile = Instantiate(HeroProjectilePrefab, HeroProjectileSpawnPoint.position, Quaternion.identity) as GameObject;
-            var heroProjectileRigidBody = heroProjectile.GetComponent<Rigidbody2D>();
-            heroProjectileRigidBody.velocity = Quaternion.Euler(0, 0, 0) * Vector3.right * 10; //10 == power
-            Destroy(heroProjectile, 0.10f);
+            int NumberOfPojectiles = GameObject.FindGameObjectsWithTag("Projectile").Length;
+            if (NumberOfPojectiles < 2)
+            {
+                var heroProjectile = Instantiate(HeroProjectilePrefab, HeroProjectileSpawnPoint.position, Quaternion.identity) as GameObject;
+                var heroProjectileRigidBody = heroProjectile.GetComponent<Rigidbody2D>();
+                heroProjectileRigidBody.velocity = Quaternion.Euler(0, 0, 0) * Vector3.right * 10; //10 == power
+                Destroy(heroProjectile, 0.10f);
+            }
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "Enemy_Projectile")
+        if (collision.gameObject.tag == "FlipMovement") {
+            Physics2D.IgnoreCollision(collision.gameObject.GetComponent<BoxCollider2D>(), heroPrefab.GetComponent<BoxCollider2D>());
+        }
+        else if (collision.gameObject.tag == "Enemy_Projectile")
         {
             GameObject enemyProjectile = GameObject.FindGameObjectWithTag("Enemy_Projectile");
             //Set the player's velocity in the x direction to the inverse of the projectile speed so it stays in same spot
             rb.velocity = new Vector2(-enemyProjectile.GetComponent<Rigidbody2D>().velocity.x, 0);
+            health -= enemyDamage;
+            if (health <= 0)
+            {
+                GameObject bloodSplatter = Instantiate(_bloodSplatPrefab, _bloodSplatSpawn.position, Quaternion.identity);
+                bloodSplatter.GetComponent<ParticleSystem>().Play();
+                heroAudioSource.clip = deathsound;
+                heroAudioSource.Play();
+                sr.forceRenderingOff = true;
+                isAlive = false;
+            }
+        }
+        else if(collision.gameObject.tag == "Enemy")
+        {
             health -= enemyDamage;
             if (health <= 0)
             {

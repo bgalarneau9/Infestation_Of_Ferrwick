@@ -8,6 +8,7 @@ TagManager:
   - Enemy_Projectile
   - Kill_Zone
   - Enemy
+  - FlipMovement
   layers:
   - Default
   - TransparentFX
