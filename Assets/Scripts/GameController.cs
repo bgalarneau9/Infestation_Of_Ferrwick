@@ -86,6 +86,10 @@ public class GameController : MonoBehaviour
         {
             InitializeComponents_Scene_Tutorial();
         }
+        else if (SceneManager.GetActiveScene().buildIndex == 6)
+        {
+            InitializeComponents_Scene_Level2();
+        }
     }
 
     // Update is called once per frame
@@ -141,6 +145,32 @@ public class GameController : MonoBehaviour
             {
                 //Instantiate Dark Knight
                 Instantiate(darkKnight, new Vector2(0,0), Quaternion.identity);
+            }
+            else if (knightChosen == 1)
+            {
+                //Instantiate Silver
+                Instantiate(silverKnight, new Vector2(0, 0), Quaternion.identity);
+            }
+        }
+    }
+    public void InitializeComponents_Scene_Level2()
+    {
+        if (menuAudioSource.isPlaying == true)
+        {
+            menuAudioSource.Stop();
+            menuAudioSource.clip = menuClip;
+            menuAudioSource.Play();
+        }
+        buttonBack = GameObject.Find("Button_Back").GetComponent<Button>();
+        buttonBack.onClick.AddListener(() => { onButtonBackClicked(); });
+        int NumberOfPlayers = GameObject.FindGameObjectsWithTag("Player").Length;
+        //Only instantiate one player
+        if (NumberOfPlayers < 1)
+        {
+            if (knightChosen == 0)
+            {
+                //Instantiate Dark Knight
+                Instantiate(darkKnight, new Vector2(0, 0), Quaternion.identity);
             }
             else if (knightChosen == 1)
             {
@@ -220,7 +250,7 @@ public class GameController : MonoBehaviour
     }
     private void onButtonNextLevelClicked()
     {
-        SceneManager.LoadScene(level + 1);
+        SceneManager.LoadScene(6);
     }
     private void onButtonRestartClicked()
     {
@@ -244,7 +274,8 @@ public class GameController : MonoBehaviour
 
     private void onPlayGameClicked()
     {
-        SceneManager.LoadScene(level);
+        //CHANGE TO LEVEL 1
+        SceneManager.LoadScene(6);
     }
     private void onPlayerSelectClicked()
     {
