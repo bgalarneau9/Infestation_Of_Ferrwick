@@ -163,6 +163,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 171985088}
     m_Modifications:
+    - target: {fileID: 267881250, guid: 19f3d5dbc0e2aff46a81845dc6b2330e, type: 3}
+      propertyPath: moveSpeed
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7443368491174416811, guid: 19f3d5dbc0e2aff46a81845dc6b2330e, type: 3}
       propertyPath: m_Name
       value: Enemy_Spellcaster
@@ -2382,7 +2386,7 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 0.3
+  near clip plane: -30
   far clip plane: 1000
   field of view: 60
   orthographic: 1
