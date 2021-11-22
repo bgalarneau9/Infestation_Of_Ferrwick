@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class EnemyGoatController : MonoBehaviour
 {
+    //Attacking Player
+    private float allowableAttackDist;
+    private float timeBetweenAttack;
+    private float nextAttack;
     //Movement
     public Vector2 moveBy;
     public float moveSpeed;
@@ -32,7 +36,12 @@ public class EnemyGoatController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        rb.constraints = RigidbodyConstraints2D.FreezeRotation;
+        rb.constraints = RigidbodyConstraints2D.FreezePositionY;
         health = 250;
+        moveSpeed = 1;
+        timeBetweenAttack = 2;
+        allowableAttackDist = 5;
     }
 
     // Update is called once per frame
