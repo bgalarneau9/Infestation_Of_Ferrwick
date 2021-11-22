@@ -255,7 +255,14 @@ public class GameController : MonoBehaviour
     private void onButtonNextLevelClicked()
     {
         level += 1;
-        SceneManager.LoadScene(levels[level]);
+        //Last level, load main menu, later to be load credits
+        if(SceneManager.GetActiveScene().buildIndex == 6)
+        {
+            SceneManager.LoadScene(1);
+        } else
+        {
+            SceneManager.LoadScene(levels[level]);
+        }
     }
     private void onButtonRestartClicked()
     {
