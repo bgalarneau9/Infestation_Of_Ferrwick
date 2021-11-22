@@ -128,6 +128,7 @@ public class GameController : MonoBehaviour
         if (menuAudioSource.isPlaying == true)
         {
             menuAudioSource.Stop();
+            menuAudioSource.clip = menuClip;
             menuAudioSource.Play();
         }
         buttonBack = GameObject.Find("Button_Back").GetComponent<Button>();
@@ -200,7 +201,7 @@ public class GameController : MonoBehaviour
             menuAudioSource.Play();
         }
         buttonTryAgain = GameObject.Find("Button_Restart").GetComponent<Button>();
-        buttonTryAgain.onClick.AddListener(() => { onButtonNextLevelClicked(); });
+        buttonTryAgain.onClick.AddListener(() => { onButtonRestartClicked(); });
     }
     public void InitializeComponents_Scene_Level_Cleared()
     {
@@ -220,6 +221,10 @@ public class GameController : MonoBehaviour
     private void onButtonNextLevelClicked()
     {
         SceneManager.LoadScene(level + 1);
+    }
+    private void onButtonRestartClicked()
+    {
+        SceneManager.LoadScene(level);
     }
 
     private void onButtonSilverKnightClicked()
