@@ -43,6 +43,7 @@ public class GameController : MonoBehaviour
     [SerializeField]
     private GameObject silverKnight;
     private int knightChosen = 0;
+    private int[] levels;
 
     private void Awake()
     {
@@ -62,6 +63,7 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        levels = new int[] { 0, 6};
         if (SceneManager.GetActiveScene().buildIndex == 1)
         {
             InitializeComponents_Scene_Main_Menu();
@@ -250,7 +252,8 @@ public class GameController : MonoBehaviour
     }
     private void onButtonNextLevelClicked()
     {
-        SceneManager.LoadScene(6);
+        level += 1;
+        SceneManager.LoadScene(levels[level]);
     }
     private void onButtonRestartClicked()
     {
@@ -275,7 +278,7 @@ public class GameController : MonoBehaviour
     private void onPlayGameClicked()
     {
         //CHANGE TO LEVEL 1
-        SceneManager.LoadScene(6);
+        SceneManager.LoadScene(level);
     }
     private void onPlayerSelectClicked()
     {
