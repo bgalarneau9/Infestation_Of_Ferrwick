@@ -259,7 +259,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 135.54288, y: -32.217163}
+  m_AnchoredPosition: {x: 140, y: -32.217163}
   m_SizeDelta: {x: 171.0858, y: 34.4343}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &118698565
@@ -1152,6 +1152,7 @@ MonoBehaviour:
   menuClip: {fileID: 0}
   gameOverClip: {fileID: 0}
   levelCompleteClip: {fileID: 0}
+  level2: {fileID: 0}
   isHard: 0
   darkKnight: {fileID: 7118067203466299472, guid: d43528eec1fda2c4ca669f21dc984bba, type: 3}
   silverKnight: {fileID: 614806875538037759, guid: 1ffa0b2c314cddb4e82c72e123fff94e, type: 3}
