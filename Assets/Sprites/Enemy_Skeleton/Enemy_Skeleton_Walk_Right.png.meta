@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: 34a707f0d3583584ebe72ee9d7e845f2
+guid: abcbc9ec5e56241489803a307734cbf4
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1027645405967641784
-    second: Enemy_Skeleton_Walk_Left_0
+      213: 7067191969345972542
+    second: Enemy_Skeleton_Walk_Right_0
   - first:
-      213: 4033964716705860031
-    second: Enemy_Skeleton_Walk_Left_1
+      213: 986453916040132018
+    second: Enemy_Skeleton_Walk_Right_1
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -97,13 +97,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Enemy_Skeleton_Walk_Left_0
+      name: Enemy_Skeleton_Walk_Right_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 128
-        height: 128
+        x: 40
+        y: 56
+        width: 40
+        height: 44
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -111,20 +111,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8439c3ea2f11db1f0800000000000000
-      internalID: -1027645405967641784
+      spriteID: e392c5c07a5b31260800000000000000
+      internalID: 7067191969345972542
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Enemy_Skeleton_Walk_Left_1
+      name: Enemy_Skeleton_Walk_Right_1
       rect:
         serializedVersion: 2
-        x: 128
-        y: 0
-        width: 128
-        height: 128
+        x: 168
+        y: 56
+        width: 40
+        height: 44
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -132,8 +132,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fb946b779858bf730800000000000000
-      internalID: 4033964716705860031
+      spriteID: 2b57dd43c9690bd00800000000000000
+      internalID: 986453916040132018
       vertices: []
       indices: 
       edges: []
