@@ -256,7 +256,7 @@ public class GameController : MonoBehaviour
     {
         level += 1;
         //Last level, load main menu, later to be load credits
-        if(SceneManager.GetActiveScene().buildIndex == 6)
+        if(level == 2)
         {
             SceneManager.LoadScene(1);
         } else
