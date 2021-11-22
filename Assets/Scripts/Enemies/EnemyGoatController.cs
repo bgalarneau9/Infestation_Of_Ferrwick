@@ -40,14 +40,18 @@ public class EnemyGoatController : MonoBehaviour
         rb.constraints = RigidbodyConstraints2D.FreezePositionY;
         health = 250;
         moveSpeed = 1;
-        timeBetweenAttack = 2;
+        timeBetweenAttack = 4;
         allowableAttackDist = 5;
+        nextAttack = Time.time + timeBetweenAttack;
     }
 
     // Update is called once per frame
     void Update()
     {
-        tryAttack();
+        if( isAlive == true )
+        {
+            tryAttack();
+        }
     }
     private void tryAttack()
     {
@@ -61,6 +65,37 @@ public class EnemyGoatController : MonoBehaviour
             Destroy(projectile, 2f);
             nextAttack = Time.time + timeBetweenAttack;
             anim.SetTrigger("Idle");
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "FlipMovement")
+        {
+            Physics2D.IgnoreCollision(collision.gameObject.GetComponent<BoxCollider2D>(), enemyPrefab.GetComponent<BoxCollider2D>());
+        }
+        else if (collision.gameObject.tag == "Player")
+        {
+            rb.velocity = new Vector3(0, 0, 0);
+        }
+        else if (collision.gameObject.tag == "Projectile")
+        {
+            rb.velocity = new Vector3(0, 0, 0);
+            GameObject heroProjectile = GameObject.FindGameObjectWithTag("Projectile");
+            //Set the enemies velocity in the x direction to the inverse of the projectile speed so it stay in same spot
+            //rb.velocity = new Vector2(-heroProjectile.GetComponent<Rigidbody2D>().velocity.x, 0);
+            health -= 25;
+            if (health <= 0 && isAlive == true)
+            {
+                GameObject bloodSplatter = Instantiate(_bloodSplatPrefab, _bloodSplatSpawn.position, Quaternion.identity);
+                bloodSplatter.GetComponent<ParticleSystem>().Play();
+                enemyAudioSource.clip = deathsound;
+                enemyAudioSource.PlayOneShot(deathsound);
+                bc.enabled = false;
+                //Make enemy invisible while death audio plays
+                sr.forceRenderingOff = true;
+                //Make sure enemy can't throw out an attack when he is dead
+                isAlive = false;
+            }
         }
     }
 }
