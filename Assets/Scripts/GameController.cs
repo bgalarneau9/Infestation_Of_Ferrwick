@@ -19,6 +19,8 @@ public class GameController : MonoBehaviour
     private AudioClip gameOverClip;
     [SerializeField]
     private AudioClip levelCompleteClip;
+    [SerializeField]
+    private AudioClip level2;
     private Button buttonPlayGame;
     private Button buttonPlayerSelect;
     private Button buttonQuitGame;
@@ -160,7 +162,7 @@ public class GameController : MonoBehaviour
         if (menuAudioSource.isPlaying == true)
         {
             menuAudioSource.Stop();
-            menuAudioSource.clip = menuClip;
+            menuAudioSource.clip = level2;
             menuAudioSource.Play();
         }
         buttonBack = GameObject.Find("Button_Back").GetComponent<Button>();
@@ -257,7 +259,7 @@ public class GameController : MonoBehaviour
     }
     private void onButtonRestartClicked()
     {
-        SceneManager.LoadScene(level);
+        SceneManager.LoadScene(levels[level]);
     }
 
     private void onButtonSilverKnightClicked()
