@@ -3199,6 +3199,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_Skeleton
       objectReference: {fileID: 0}
+    - target: {fileID: 7061878279543075305, guid: 8e0d7be4462a4ea42b456bdf4f89ecd7, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 7061878279543075308, guid: 8e0d7be4462a4ea42b456bdf4f89ecd7, type: 3}
       propertyPath: m_RootOrder
       value: 5
