@@ -19,6 +19,8 @@ public class GameController : MonoBehaviour
     private AudioClip gameOverClip;
     [SerializeField]
     private AudioClip levelCompleteClip;
+    [SerializeField]
+    private AudioClip level2;
     private Button buttonPlayGame;
     private Button buttonPlayerSelect;
     private Button buttonQuitGame;
@@ -43,6 +45,7 @@ public class GameController : MonoBehaviour
     [SerializeField]
     private GameObject silverKnight;
     private int knightChosen = 0;
+    private int[] levels;
 
     private void Awake()
     {
@@ -62,6 +65,7 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        levels = new int[] { 0, 6};
         if (SceneManager.GetActiveScene().buildIndex == 1)
         {
             InitializeComponents_Scene_Main_Menu();
@@ -86,12 +90,16 @@ public class GameController : MonoBehaviour
         {
             InitializeComponents_Scene_Tutorial();
         }
+        else if (SceneManager.GetActiveScene().buildIndex == 6)
+        {
+            InitializeComponents_Scene_Level2();
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (SceneManager.GetActiveScene().buildIndex == 0 )
+        if (SceneManager.GetActiveScene().buildIndex == 0 || SceneManager.GetActiveScene().buildIndex == 6)
         {
             int heroNumber= GameObject.FindGameObjectsWithTag("Player").Length;
             if ( heroNumber == 0)
@@ -141,6 +149,32 @@ public class GameController : MonoBehaviour
             {
                 //Instantiate Dark Knight
                 Instantiate(darkKnight, new Vector2(0,0), Quaternion.identity);
+            }
+            else if (knightChosen == 1)
+            {
+                //Instantiate Silver
+                Instantiate(silverKnight, new Vector2(0, 0), Quaternion.identity);
+            }
+        }
+    }
+    public void InitializeComponents_Scene_Level2()
+    {
+        if (menuAudioSource.isPlaying == true)
+        {
+            menuAudioSource.Stop();
+            menuAudioSource.clip = level2;
+            menuAudioSource.Play();
+        }
+        buttonBack = GameObject.Find("Button_Back").GetComponent<Button>();
+        buttonBack.onClick.AddListener(() => { onButtonBackClicked(); });
+        int NumberOfPlayers = GameObject.FindGameObjectsWithTag("Player").Length;
+        //Only instantiate one player
+        if (NumberOfPlayers < 1)
+        {
+            if (knightChosen == 0)
+            {
+                //Instantiate Dark Knight
+                Instantiate(darkKnight, new Vector2(0, 0), Quaternion.identity);
             }
             else if (knightChosen == 1)
             {
@@ -220,11 +254,19 @@ public class GameController : MonoBehaviour
     }
     private void onButtonNextLevelClicked()
     {
-        SceneManager.LoadScene(level + 1);
+        level += 1;
+        //Last level, load main menu, later to be load credits
+        if(SceneManager.GetActiveScene().buildIndex == 6)
+        {
+            SceneManager.LoadScene(1);
+        } else
+        {
+            SceneManager.LoadScene(levels[level]);
+        }
     }
     private void onButtonRestartClicked()
     {
-        SceneManager.LoadScene(level);
+        SceneManager.LoadScene(levels[level]);
     }
 
     private void onButtonSilverKnightClicked()
@@ -244,6 +286,7 @@ public class GameController : MonoBehaviour
 
     private void onPlayGameClicked()
     {
+        //CHANGE TO LEVEL 1
         SceneManager.LoadScene(level);
     }
     private void onPlayerSelectClicked()
