@@ -17,6 +17,8 @@ public class GameController : MonoBehaviour
     private AudioClip menuClip;
     [SerializeField]
     private AudioClip gameOverClip;
+    [SerializeField]
+    private AudioClip levelCompleteClip;
     private Button buttonPlayGame;
     private Button buttonPlayerSelect;
     private Button buttonQuitGame;
@@ -202,6 +204,12 @@ public class GameController : MonoBehaviour
     }
     public void InitializeComponents_Scene_Level_Cleared()
     {
+        if (menuAudioSource.isPlaying == true)
+        {
+            menuAudioSource.Stop();
+            menuAudioSource.clip = levelCompleteClip;
+            menuAudioSource.Play();
+        }
         buttonLevelCleared = GameObject.Find("Button_Next_Level").GetComponent<Button>();
         buttonLevelCleared.onClick.AddListener(() => { onButtonNextLevelClicked(); });
     }
