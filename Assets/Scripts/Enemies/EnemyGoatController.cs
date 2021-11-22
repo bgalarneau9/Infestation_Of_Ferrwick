@@ -47,6 +47,20 @@ public class EnemyGoatController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        tryAttack();
+    }
+    private void tryAttack()
+    {
+        GameObject hero = GameObject.FindGameObjectWithTag("Player");
+        if (Time.time >= nextAttack)
+        {
+            anim.SetBool("isAttacking", true);
+            var projectile = Instantiate(EnemyProjectilePrefab, EnemyProjectileSpawnPoint.position, Quaternion.identity) as GameObject;
+            var projectileRigidBody = projectile.GetComponent<Rigidbody2D>();
+            projectileRigidBody.velocity = Quaternion.Euler(0, 0, 0) * Vector3.left * 15; //10 == power
+            Destroy(projectile, 2f);
+            nextAttack = Time.time + timeBetweenAttack;
+            anim.SetTrigger("Idle");
+        }
     }
 }
