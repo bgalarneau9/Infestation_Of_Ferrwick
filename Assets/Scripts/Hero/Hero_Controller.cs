@@ -41,7 +41,7 @@ public class Hero_Controller : MonoBehaviour
         deathText = GameObject.Find("Death_Text").GetComponent<Text>();
         isHard = GameObject.Find("EventSystem").GetComponent<GameController>().isHard;
         playerName = GameObject.Find("EventSystem").GetComponent<GameController>().playerName;
-        Physics2D.IgnoreCollision(GameObject.FindGameObjectWithTag("FlipMovement").GetComponent<BoxCollider2D>(), heroPrefab.GetComponent<BoxCollider2D>());
+        
         if (isHard == false)
         {
             enemyDamage = 15;
@@ -100,6 +100,9 @@ public class Hero_Controller : MonoBehaviour
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.tag == "FlipMovement") {
+            Physics2D.IgnoreCollision(collision.gameObject.GetComponent<BoxCollider2D>(), heroPrefab.GetComponent<BoxCollider2D>());
+        }
         if (collision.gameObject.tag == "Enemy_Projectile")
         {
             GameObject enemyProjectile = GameObject.FindGameObjectWithTag("Enemy_Projectile");
