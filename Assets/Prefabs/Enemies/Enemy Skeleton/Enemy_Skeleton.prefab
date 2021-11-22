@@ -296,7 +296,7 @@ MonoBehaviour:
   sr: {fileID: 7061878279543075307}
   rb: {fileID: 7061878279543075309}
   bc: {fileID: 7061878279543075310}
-  enemyPrefab: {fileID: 0}
+  enemyPrefab: {fileID: 7061878279543075305}
   _bloodSplatSpawn: {fileID: 7061878280515604723}
   _bloodSplatPrefab: {fileID: 654515224440077745, guid: 4949d58204960d342be56bbb0ea0e928, type: 3}
   deathsound: {fileID: 8300000, guid: 1b55110117a05444dad16f46f8b1e855, type: 3}
