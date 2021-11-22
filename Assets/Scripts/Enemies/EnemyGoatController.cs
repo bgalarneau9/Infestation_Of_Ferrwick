@@ -63,7 +63,6 @@ public class EnemyGoatController : MonoBehaviour
             distBetween = Vector3.Distance(player.transform.position, enemyPrefab.transform.position);
             tryMove();
         }
-        rb.rotation = 0;
     }
     private void tryAttack()
     {
@@ -106,8 +105,6 @@ public class EnemyGoatController : MonoBehaviour
         {
             rb.velocity = new Vector3(0, 0, 0);
             GameObject heroProjectile = GameObject.FindGameObjectWithTag("Projectile");
-            //Set the enemies velocity in the x direction to the inverse of the projectile speed so it stay in same spot
-            //rb.velocity = new Vector2(-heroProjectile.GetComponent<Rigidbody2D>().velocity.x, 0);
             health -= 25;
             if (health <= 0 && isAlive == true)
             {
