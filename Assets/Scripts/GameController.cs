@@ -67,12 +67,12 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        levels = new int[] { 0, 6, 7};
-        if (SceneManager.GetActiveScene().buildIndex == 1)
+        levels = new int[] { 1, 6, 7};
+        if (SceneManager.GetActiveScene().buildIndex == 0)
         {
             InitializeComponents_Scene_Main_Menu();
         }
-        else if (SceneManager.GetActiveScene().buildIndex == 0)
+        else if (SceneManager.GetActiveScene().buildIndex == 1)
         {
             InitializeComponents_Scene_Sample();
         }
@@ -110,7 +110,7 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (SceneManager.GetActiveScene().buildIndex == 0 || SceneManager.GetActiveScene().buildIndex == 6 || SceneManager.GetActiveScene().buildIndex == 7)
+        if (SceneManager.GetActiveScene().buildIndex == 1 || SceneManager.GetActiveScene().buildIndex == 6 || SceneManager.GetActiveScene().buildIndex == 7)
         {
             int heroNumber= GameObject.FindGameObjectsWithTag("Player").Length;
             if ( heroNumber == 0)
@@ -254,6 +254,7 @@ public class GameController : MonoBehaviour
     }
     private void InitializeComponents_Scene_Credits()
     {
+        level = 0;
         buttonBack = GameObject.Find("Button_Back").GetComponent<Button>();
         buttonBack.onClick.AddListener(() => { onButtonBackClicked(); });
     }
@@ -323,13 +324,13 @@ public class GameController : MonoBehaviour
 
     private void onButtonBackClicked()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(0);
     }
 
     private void onPlayGameClicked()
     {
         //CHANGE TO LEVEL 1
-        SceneManager.LoadScene(level);
+        SceneManager.LoadScene(levels[level]);
     }
     private void onPlayerSelectClicked()
     {
