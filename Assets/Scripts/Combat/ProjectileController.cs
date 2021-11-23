@@ -23,6 +23,8 @@ public class ProjectileController : MonoBehaviour
         {
             Physics2D.IgnoreCollision(collision.gameObject.GetComponent<BoxCollider2D>(), projectile.GetComponent<BoxCollider2D>());
         }
-        Destroy(projectile);
+        if (collision.gameObject.tag == "Player") {
+            Destroy(projectile);
+        }
     }
 }
