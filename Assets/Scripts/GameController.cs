@@ -65,7 +65,7 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        levels = new int[] { 0, 6};
+        levels = new int[] { 0, 6, 7};
         if (SceneManager.GetActiveScene().buildIndex == 1)
         {
             InitializeComponents_Scene_Main_Menu();
@@ -94,12 +94,17 @@ public class GameController : MonoBehaviour
         {
             InitializeComponents_Scene_Level2();
         }
+        else if (SceneManager.GetActiveScene().buildIndex == 7)
+        {
+            InitializeComponents_Scene_Level3();
+        }
     }
+
 
     // Update is called once per frame
     void Update()
     {
-        if (SceneManager.GetActiveScene().buildIndex == 0 || SceneManager.GetActiveScene().buildIndex == 6)
+        if (SceneManager.GetActiveScene().buildIndex == 0 || SceneManager.GetActiveScene().buildIndex == 6 || SceneManager.GetActiveScene().buildIndex == 7)
         {
             int heroNumber= GameObject.FindGameObjectsWithTag("Player").Length;
             if ( heroNumber == 0)
@@ -158,6 +163,32 @@ public class GameController : MonoBehaviour
         }
     }
     public void InitializeComponents_Scene_Level2()
+    {
+        if (menuAudioSource.isPlaying == true)
+        {
+            menuAudioSource.Stop();
+            menuAudioSource.clip = level2;
+            menuAudioSource.Play();
+        }
+        buttonBack = GameObject.Find("Button_Back").GetComponent<Button>();
+        buttonBack.onClick.AddListener(() => { onButtonBackClicked(); });
+        int NumberOfPlayers = GameObject.FindGameObjectsWithTag("Player").Length;
+        //Only instantiate one player
+        if (NumberOfPlayers < 1)
+        {
+            if (knightChosen == 0)
+            {
+                //Instantiate Dark Knight
+                Instantiate(darkKnight, new Vector2(0, 0), Quaternion.identity);
+            }
+            else if (knightChosen == 1)
+            {
+                //Instantiate Silver
+                Instantiate(silverKnight, new Vector2(0, 0), Quaternion.identity);
+            }
+        }
+    }
+    private void InitializeComponents_Scene_Level3()
     {
         if (menuAudioSource.isPlaying == true)
         {
@@ -256,7 +287,7 @@ public class GameController : MonoBehaviour
     {
         level += 1;
         //Last level, load main menu, later to be load credits
-        if(level == 2)
+        if(level == 7)
         {
             SceneManager.LoadScene(1);
         } else
