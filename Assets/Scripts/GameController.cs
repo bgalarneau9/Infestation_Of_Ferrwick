@@ -21,6 +21,8 @@ public class GameController : MonoBehaviour
     private AudioClip levelCompleteClip;
     [SerializeField]
     private AudioClip level2;
+    [SerializeField]
+    private AudioClip level3;
     private Button buttonPlayGame;
     private Button buttonPlayerSelect;
     private Button buttonQuitGame;
@@ -193,7 +195,7 @@ public class GameController : MonoBehaviour
         if (menuAudioSource.isPlaying == true)
         {
             menuAudioSource.Stop();
-            menuAudioSource.clip = level2;
+            menuAudioSource.clip = level3;
             menuAudioSource.Play();
         }
         buttonBack = GameObject.Find("Button_Back").GetComponent<Button>();
