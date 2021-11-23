@@ -11,6 +11,7 @@ public class EnemyGoatController : MonoBehaviour
     private float allowableAttackDist;
     private float timeBetweenAttack;
     private float nextAttack;
+    private float tooFar;
     //Movement
     public Vector2 moveBy;
     public float moveSpeed;
@@ -43,11 +44,12 @@ public class EnemyGoatController : MonoBehaviour
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         rb.constraints = RigidbodyConstraints2D.FreezePositionY;
         health = 250;
-        moveSpeed = 0.10f;
+        moveSpeed = 0.2f;
         timeBetweenAttack = 4;
-        allowableAttackDist = 5;
+        allowableAttackDist = 7;
         nextAttack = Time.time + timeBetweenAttack;
         moveBy = new Vector2(-1, 0);
+        tooFar = 12;
     }
 
     // Update is called once per frame
@@ -63,11 +65,15 @@ public class EnemyGoatController : MonoBehaviour
             distBetween = Vector3.Distance(player.transform.position, enemyPrefab.transform.position);
             tryMove();
         }
+        if (isAlive == false && enemyAudioSource.isPlaying == false)
+        {
+            Destroy(enemyPrefab);
+        }
     }
     private void tryAttack()
     {
         GameObject hero = GameObject.FindGameObjectWithTag("Player");
-        if (Time.time >= nextAttack)
+        if (Time.time >= nextAttack && distBetween < allowableAttackDist)
         {
             anim.Play("Goat_Attack");
             var projectile = Instantiate(EnemyProjectilePrefab, EnemyProjectileSpawnPoint.position, Quaternion.identity) as GameObject;
@@ -80,15 +86,18 @@ public class EnemyGoatController : MonoBehaviour
     }
     private void tryMove()
     {
-        if (distBetween > 3)
+        if(distBetween < tooFar)
         {
-            anim.Play("Goat_Move_Left");
-            rb.position += moveBy * moveSpeed * Time.fixedDeltaTime;
-        }
-        else if (distBetween < 2)
-        {
-            anim.Play("Goat_Move_Right");
-            rb.position -= moveBy * 3 * Time.fixedDeltaTime;
+            if (distBetween > allowableAttackDist)
+            {
+                anim.Play("Goat_Move_Left");
+                rb.position += moveBy * moveSpeed * Time.fixedDeltaTime;
+            }
+            else if (distBetween < 4)
+            {
+                anim.Play("Goat_Move_Right");
+                rb.position -= moveBy * moveSpeed * Time.fixedDeltaTime;
+            }
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
