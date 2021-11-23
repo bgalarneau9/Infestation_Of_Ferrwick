@@ -160,6 +160,7 @@ MonoBehaviour:
   gameOverClip: {fileID: 0}
   levelCompleteClip: {fileID: 0}
   level2: {fileID: 0}
+  level3: {fileID: 0}
   isHard: 0
   darkKnight: {fileID: 7118067203466299472, guid: d43528eec1fda2c4ca669f21dc984bba, type: 3}
   silverKnight: {fileID: 614806875538037759, guid: 1ffa0b2c314cddb4e82c72e123fff94e, type: 3}
@@ -2381,9 +2382,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 1417188193
-  m_SortingLayer: 1
-  m_SortingOrder: 0
+  m_SortingLayerID: -756608121
+  m_SortingLayer: -1
+  m_SortingOrder: 1
   m_Sprite: {fileID: -1673732733077124514, guid: 595fa71db1d977643b859a215d557eb7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2403,8 +2404,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1205363425}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.0346, y: 0.6771, z: 0}
-  m_LocalScale: {x: 1.5801913, y: 1.1941, z: 1}
+  m_LocalPosition: {x: -15.0346, y: 0.7128, z: 0}
+  m_LocalScale: {x: 1.5801913, y: 1.2043693, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 6
