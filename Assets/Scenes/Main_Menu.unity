@@ -534,7 +534,7 @@ MonoBehaviour:
   menuClip: {fileID: 8300000, guid: 7c514f19711b86b4cb5793b796156bba, type: 3}
   gameOverClip: {fileID: 8300000, guid: ea5af40a74f89ac44884cf1de663f8c4, type: 3}
   levelCompleteClip: {fileID: 8300000, guid: 9a93a043758b8cf4c8700ca8911d93b3, type: 3}
-  level2: {fileID: 8300000, guid: e30c49482ebecaf46ac33bfd0ab7a83a, type: 3}
+  level2: {fileID: 8300000, guid: ab5cf5816a4ac2949b9af2c43c7a0282, type: 3}
   isHard: 0
   darkKnight: {fileID: 7118067203466299472, guid: d43528eec1fda2c4ca669f21dc984bba, type: 3}
   silverKnight: {fileID: 614806875538037759, guid: 1ffa0b2c314cddb4e82c72e123fff94e, type: 3}
