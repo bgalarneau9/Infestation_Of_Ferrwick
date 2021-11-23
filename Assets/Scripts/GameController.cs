@@ -100,6 +100,10 @@ public class GameController : MonoBehaviour
         {
             InitializeComponents_Scene_Level3();
         }
+        else if (SceneManager.GetActiveScene().buildIndex == 7)
+        {
+            InitializeComponents_Scene_Tutorial();
+        }
     }
 
 
@@ -291,7 +295,7 @@ public class GameController : MonoBehaviour
         //Last level, load main menu, later to be load credits
         if(level == 3)
         {
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(8);
         } else
         {
             SceneManager.LoadScene(levels[level]);

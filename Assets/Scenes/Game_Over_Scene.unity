@@ -394,8 +394,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0000038147, y: 0.0013814}
-  m_SizeDelta: {x: 800, y: 391.55}
+  m_AnchoredPosition: {x: -0.0000038147, y: 0.00040013}
+  m_SizeDelta: {x: 800, y: 394.73}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1243514929
 MonoBehaviour:
@@ -514,6 +514,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 898150b098ede594da5302e6b96ec263, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  menuAudioSource: {fileID: 0}
+  playerName: 
+  menuClip: {fileID: 0}
+  gameOverClip: {fileID: 0}
+  levelCompleteClip: {fileID: 0}
+  level2: {fileID: 0}
+  level3: {fileID: 0}
   isHard: 0
   darkKnight: {fileID: 0}
   silverKnight: {fileID: 0}
