@@ -287,7 +287,7 @@ public class GameController : MonoBehaviour
     {
         level += 1;
         //Last level, load main menu, later to be load credits
-        if(level == 2)
+        if(level == 3)
         {
             SceneManager.LoadScene(1);
         } else
