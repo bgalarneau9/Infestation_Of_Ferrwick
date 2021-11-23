@@ -100,9 +100,9 @@ public class GameController : MonoBehaviour
         {
             InitializeComponents_Scene_Level3();
         }
-        else if (SceneManager.GetActiveScene().buildIndex == 7)
+        else if (SceneManager.GetActiveScene().buildIndex == 8)
         {
-            InitializeComponents_Scene_Tutorial();
+            InitializeComponents_Scene_Credits();
         }
     }
 
@@ -248,6 +248,11 @@ public class GameController : MonoBehaviour
     }
 
     private void InitializeComponents_Scene_Tutorial()
+    {
+        buttonBack = GameObject.Find("Button_Back").GetComponent<Button>();
+        buttonBack.onClick.AddListener(() => { onButtonBackClicked(); });
+    }
+    private void InitializeComponents_Scene_Credits()
     {
         buttonBack = GameObject.Find("Button_Back").GetComponent<Button>();
         buttonBack.onClick.AddListener(() => { onButtonBackClicked(); });
