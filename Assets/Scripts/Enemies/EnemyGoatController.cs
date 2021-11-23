@@ -43,9 +43,9 @@ public class EnemyGoatController : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         rb.constraints = RigidbodyConstraints2D.FreezeRotation;
         rb.constraints = RigidbodyConstraints2D.FreezePositionY;
-        health = 250;
-        moveSpeed = 0.2f;
-        timeBetweenAttack = 4;
+        health = 300;
+        moveSpeed = 0.1f;
+        timeBetweenAttack = 2;
         allowableAttackDist = 7;
         nextAttack = Time.time + timeBetweenAttack;
         moveBy = new Vector2(-1, 0);
@@ -55,6 +55,7 @@ public class EnemyGoatController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        rb.rotation = 0;
         if( isAlive == true )
         {
             tryAttack();
@@ -114,6 +115,8 @@ public class EnemyGoatController : MonoBehaviour
         {
             rb.velocity = new Vector3(0, 0, 0);
             GameObject heroProjectile = GameObject.FindGameObjectWithTag("Projectile");
+            //Set the enemies velocity in the x direction to the inverse of the projectile speed so it stay in same spot
+            rb.velocity = new Vector2(-heroProjectile.GetComponent<Rigidbody2D>().velocity.x, 0);
             health -= 25;
             if (health <= 0 && isAlive == true)
             {

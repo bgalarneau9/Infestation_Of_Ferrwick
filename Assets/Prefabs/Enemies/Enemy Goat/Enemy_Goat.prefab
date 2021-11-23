@@ -199,8 +199,8 @@ GameObject:
   - component: {fileID: 7845474666587117360}
   - component: {fileID: 7845474666587117361}
   - component: {fileID: 7845474666587117374}
-  - component: {fileID: 7845474666587117372}
   - component: {fileID: 918053174}
+  - component: {fileID: 7845474666587117372}
   m_Layer: 0
   m_Name: Enemy_Goat
   m_TagString: Untagged
@@ -316,31 +316,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &7845474666587117372
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7845474666587117362}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f65f174ef61ee842a58226823333122, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveBy: {x: 0, y: 0}
-  moveSpeed: 0
-  sr: {fileID: 7845474666587117360}
-  rb: {fileID: 7845474666587117374}
-  bc: {fileID: 0}
-  enemyPrefab: {fileID: 7845474666587117362}
-  _bloodSplatSpawn: {fileID: 7845474665924364799}
-  _bloodSplatPrefab: {fileID: 654515224440077745, guid: 4949d58204960d342be56bbb0ea0e928, type: 3}
-  deathsound: {fileID: 8300000, guid: 1b55110117a05444dad16f46f8b1e855, type: 3}
-  enemyAudioSource: {fileID: 7845474665892862089}
-  anim: {fileID: 7845474666587117361}
-  EnemyProjectilePrefab: {fileID: 5934260320526655917, guid: bff1b02f7c9ee7e44b8e7116de8bde8f, type: 3}
-  EnemyProjectileSpawnPoint: {fileID: 7845474665601603391}
 --- !u!61 &918053174
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -358,7 +333,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.8, y: 1.3333334}
+    oldSize: {x: 1, y: 1.6666666}
     newSize: {x: 2.4, y: 4}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -367,3 +342,28 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.8, y: 1.3333334}
   m_EdgeRadius: 0
+--- !u!114 &7845474666587117372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7845474666587117362}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4f65f174ef61ee842a58226823333122, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveBy: {x: 0, y: 0}
+  moveSpeed: 0
+  sr: {fileID: 7845474666587117360}
+  rb: {fileID: 7845474666587117374}
+  bc: {fileID: 918053174}
+  enemyPrefab: {fileID: 7845474666587117362}
+  _bloodSplatSpawn: {fileID: 7845474665924364799}
+  _bloodSplatPrefab: {fileID: 654515224440077745, guid: 4949d58204960d342be56bbb0ea0e928, type: 3}
+  deathsound: {fileID: 8300000, guid: 1b55110117a05444dad16f46f8b1e855, type: 3}
+  enemyAudioSource: {fileID: 7845474665892862089}
+  anim: {fileID: 7845474666587117361}
+  EnemyProjectilePrefab: {fileID: 5934260320526655917, guid: bff1b02f7c9ee7e44b8e7116de8bde8f, type: 3}
+  EnemyProjectileSpawnPoint: {fileID: 7845474665601603391}
