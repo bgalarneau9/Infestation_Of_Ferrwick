@@ -37,6 +37,8 @@ public class GameController : MonoBehaviour
     private Button buttonDifficultyEasy;
     private InputField inputName;
     private Text textHeroName;
+    private bool isDarkKnight;
+    private bool isSilverKnight;
     public bool isHard;
     //Game Over
     private Button buttonTryAgain;
@@ -223,6 +225,8 @@ public class GameController : MonoBehaviour
     }
     public void InitializeComponents_Scene_Player_Select()
     {
+        isDarkKnight = false;
+        isSilverKnight = false;
         buttonDarkKnight = GameObject.Find("Button_Dark_Knight").GetComponent<Button>();
         buttonDarkKnight.onClick.AddListener(() => { onButtonDarkKnightClicked(); });
         buttonSilverKnight = GameObject.Find("Button_Silver_Knight").GetComponent<Button>();
@@ -319,11 +323,33 @@ public class GameController : MonoBehaviour
     private void onButtonSilverKnightClicked()
     {
         knightChosen = 1;
+        if (isSilverKnight == false)
+        {
+            buttonSilverKnight.GetComponent<Image>().color = Color.green;
+            buttonDarkKnight.GetComponent<Image>().color = Color.white;
+            isDarkKnight = false;
+            isSilverKnight = true;
+        } else
+        {
+            isSilverKnight = false;
+            buttonSilverKnight.GetComponent<Image>().color = Color.white;
+        }
     }
 
     private void onButtonDarkKnightClicked()
     {
         knightChosen = 0;
+        if (isDarkKnight == false )
+        {
+            buttonDarkKnight.GetComponent<Image>().color = Color.green;
+            buttonSilverKnight.GetComponent<Image>().color = Color.white;
+            isDarkKnight = true;
+            isSilverKnight = false;
+        } else
+        {
+            isDarkKnight = false;
+            buttonDarkKnight.GetComponent<Image>().color = Color.white;
+        }
     }
 
     private void onButtonBackClicked()
