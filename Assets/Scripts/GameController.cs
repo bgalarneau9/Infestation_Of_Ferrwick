@@ -242,6 +242,7 @@ public class GameController : MonoBehaviour
         inputName = GameObject.Find("InputField_Name").GetComponent<InputField>();
         inputName.onEndEdit.AddListener(delegate { onEndEditName(); });
         textHeroName = GameObject.Find("Text_Hero_Name").GetComponent<Text>();
+        textHeroName.text = "Current name is: " + playerName.ToString();
     }
 
     private void onEndEditName()
