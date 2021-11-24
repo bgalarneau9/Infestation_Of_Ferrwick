@@ -1,0 +1,12 @@
+Open source art and soundtracks used in game
+---------------------------------------------
+Credit for all files in backgrounds (except for Floor_Sprite) goes to user ansimuz of OpenGameArt.org
+Credit for determination goes to user ansimuz of OpenGameArt.org
+Credit for impactsplat01.mp3 goes to Independent.nu Submitted to OpenGameArt.org by user qubodup
+Credit for hauntedcastle soundtrack goes to user Wolfgang of OpenGameArt.org
+Credit for Alagard font goes to Pix3M submitted to OpenGameArt.org by user Julius
+Credit for cemetery 8bit theme goes to user gustavoasilveira of OpenGameArt.org
+Credit for Memoraphile - Spooky Dungeon goes to user You're Perfect Studio of OpenGameArt.org
+Credit for Celebrate goes to user MrJoshuaMcLean of OpenGameArt.org
+---------------------------------------------
+All other sprites not listed above were created by Brandon Galarneau for use in The Infestation of Ferrwick
