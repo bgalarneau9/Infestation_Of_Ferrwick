@@ -36,6 +36,7 @@ public class GameController : MonoBehaviour
     private Button buttonDifficultyHard;
     private Button buttonDifficultyEasy;
     private InputField inputName;
+    private Text textHeroName;
     public bool isHard;
     //Game Over
     private Button buttonTryAgain;
@@ -234,6 +235,7 @@ public class GameController : MonoBehaviour
         buttonDifficultyHard.onClick.AddListener(() => { onButtonDifficultyHardClicked(); });
         inputName = GameObject.Find("InputField_Name").GetComponent<InputField>();
         inputName.onEndEdit.AddListener(delegate { onEndEditName(); });
+        textHeroName = GameObject.Find("Text_Hero_Name").GetComponent<Text>();
     }
 
     private void onEndEditName()
@@ -243,8 +245,10 @@ public class GameController : MonoBehaviour
         {
             playerName = "Hero";
             inputName.text = "Name too long!";
+        } else
+        {
+            textHeroName.text = "Current name is: " + inputName.text.ToString();
         }
-        Debug.Log("Player Name: " + playerName.ToString());
     }
 
     private void InitializeComponents_Scene_Tutorial()
