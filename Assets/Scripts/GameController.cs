@@ -39,6 +39,7 @@ public class GameController : MonoBehaviour
     private Text textHeroName;
     private bool isDarkKnight;
     private bool isSilverKnight;
+    private bool hasEasyChanged;
     public bool isHard;
     //Game Over
     private Button buttonTryAgain;
@@ -227,6 +228,7 @@ public class GameController : MonoBehaviour
     {
         isDarkKnight = false;
         isSilverKnight = false;
+        hasEasyChanged = false;
         buttonDarkKnight = GameObject.Find("Button_Dark_Knight").GetComponent<Button>();
         buttonDarkKnight.onClick.AddListener(() => { onButtonDarkKnightClicked(); });
         buttonSilverKnight = GameObject.Find("Button_Silver_Knight").GetComponent<Button>();
@@ -269,12 +271,42 @@ public class GameController : MonoBehaviour
 
     private void onButtonDifficultyHardClicked()
     {
-        isHard = true;
+        if (isHard == false)
+        {
+            buttonDifficultyHard.GetComponent<Image>().color = Color.green;
+            buttonDifficultyEasy.GetComponent<Image>().color = Color.white;
+            isHard = true;
+        }
+        else
+        {
+            isHard = false;
+            hasEasyChanged = false;
+            buttonDifficultyHard.GetComponent<Image>().color = Color.white;
+        }
     }
 
     private void onButtonDifficultyEasyClicked()
     {
-        isHard = false;
+        if (isHard == true)
+        {
+            buttonDifficultyEasy.GetComponent<Image>().color = Color.green;
+            buttonDifficultyHard.GetComponent<Image>().color = Color.white;
+            isHard = false;
+        }
+        else
+        {
+            if (hasEasyChanged == false)
+            {
+                isHard = false;
+                buttonDifficultyEasy.GetComponent<Image>().color = Color.green;
+                hasEasyChanged = true;
+            } else
+            {
+                isHard = false;
+                buttonDifficultyEasy.GetComponent<Image>().color = Color.white;
+                hasEasyChanged = false;
+            }
+        }
     }
 
     public void InitializeComponents_Scene_Game_Over()
